@@ -12,21 +12,15 @@ interface Card3DTiltProps {
 export const Card3DTilt: React.FC<Card3DTiltProps> = ({
   children,
   className = '',
-  maxTilt = 10,
-  scale = 1.02,
+  maxTilt = 7,
+  scale = 1.015,
   staggerIndex = 0,
   onClick,
 }) => {
   const cardRef = useRef<HTMLDivElement | null>(null);
   const [isVisible, setIsVisible] = useState(false);
-  const [transformStyle, setTransformStyle] = useState<string>('');
-  const [glareStyle, setGlareStyle] = useState<{ x: number; y: number; opacity: number }>({
-    x: 50,
-    y: 50,
-    opacity: 0,
-  });
 
-  // 1. Intersection Observer for Scroll Unrolling Animation
+  // 1. Ultra-fast Scroll Unrolling via IntersectionObserver (no blur, hardware accelerated)
   useEffect(() => {
     const el = cardRef.current;
     if (!el) return;
@@ -39,8 +33,8 @@ export const Card3DTilt: React.FC<Card3DTiltProps> = ({
         }
       },
       {
-        threshold: 0.12,
-        rootMargin: '0px 0px -50px 0px',
+        threshold: 0.05,
+        rootMargin: '40px 0px',
       }
     );
 
@@ -48,7 +42,7 @@ export const Card3DTilt: React.FC<Card3DTiltProps> = ({
     return () => observer.disconnect();
   }, []);
 
-  // 2. Interactive 3D Cursor Tilt
+  // 2. Direct DOM 3D Cursor Tilt (Zero React state updates / zero re-renders)
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     const el = cardRef.current;
     if (!el) return;
@@ -63,23 +57,16 @@ export const Card3DTilt: React.FC<Card3DTiltProps> = ({
     const tiltX = -((y - centerY) / centerY) * maxTilt;
     const tiltY = ((x - centerX) / centerX) * maxTilt;
 
-    setTransformStyle(
-      `perspective(1000px) rotateX(${tiltX.toFixed(2)}deg) rotateY(${tiltY.toFixed(2)}deg) scale3d(${scale}, ${scale}, ${scale})`
-    );
-
-    setGlareStyle({
-      x: (x / rect.width) * 100,
-      y: (y / rect.height) * 100,
-      opacity: 0.15,
-    });
+    el.style.transform = `perspective(800px) rotateX(${tiltX.toFixed(2)}deg) rotateY(${tiltY.toFixed(2)}deg) scale3d(${scale}, ${scale}, 1)`;
   };
 
   const handleMouseLeave = () => {
-    setTransformStyle('perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)');
-    setGlareStyle((prev) => ({ ...prev, opacity: 0 }));
+    const el = cardRef.current;
+    if (!el) return;
+    el.style.transform = 'perspective(800px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)';
   };
 
-  const delayMs = staggerIndex * 90;
+  const delayMs = Math.min(staggerIndex * 40, 180);
 
   return (
     <div
@@ -87,27 +74,16 @@ export const Card3DTilt: React.FC<Card3DTiltProps> = ({
       onClick={onClick}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className={`relative transform-gpu transition-all duration-700 ease-out will-change-transform ${className}`}
+      className={`relative transform-gpu ${className}`}
       style={{
         transformOrigin: 'top center',
         transform: isVisible
-          ? transformStyle || 'perspective(1000px) rotateX(0deg) translateY(0px) scale(1)'
-          : 'perspective(1200px) rotateX(-22deg) translateY(55px) scale(0.93)',
+          ? 'perspective(800px) rotateX(0deg) translateY(0px) scale(1)'
+          : 'perspective(900px) rotateX(-12deg) translateY(24px) scale(0.97)',
         opacity: isVisible ? 1 : 0,
-        filter: isVisible ? 'blur(0px)' : 'blur(4px)',
-        transitionDelay: `${delayMs}ms`,
-        transitionProperty: 'opacity, transform, filter, box-shadow',
+        transition: `opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1) ${delayMs}ms, transform 0.45s cubic-bezier(0.16, 1, 0.3, 1) ${delayMs}ms`,
       }}
     >
-      {/* Dynamic Specular Glare Overlay */}
-      <div
-        className="pointer-events-none absolute inset-0 rounded-inherit z-10 transition-opacity duration-300"
-        style={{
-          background: `radial-gradient(circle at ${glareStyle.x}% ${glareStyle.y}%, rgba(255, 255, 255, 0.45) 0%, rgba(227, 0, 15, 0.08) 40%, transparent 80%)`,
-          opacity: glareStyle.opacity,
-          borderRadius: 'inherit',
-        }}
-      />
       {children}
     </div>
   );
