@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Volume2, VolumeX, Search, Globe, Phone, Mail } from 'lucide-react';
-import { soundEngine } from '../utils/audio';
+import { Search, Globe, Phone, Mail } from 'lucide-react';
 
 interface HeaderHUDProps {
   onOpenCommandPalette: () => void;
@@ -22,7 +21,6 @@ export const HeaderHUD: React.FC<HeaderHUDProps> = ({
   setTextSize,
 }) => {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isAudioActive, setIsAudioActive] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -31,12 +29,6 @@ export const HeaderHUD: React.FC<HeaderHUDProps> = ({
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
-  const toggleSound = () => {
-    const active = soundEngine.toggleAmbientDrone();
-    setIsAudioActive(active);
-    soundEngine.playSplitFlap();
-  };
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
@@ -142,7 +134,6 @@ export const HeaderHUD: React.FC<HeaderHUDProps> = ({
           {/* Left: Official Crest & Typography */}
           <a
             href="#overture"
-            onClick={() => soundEngine.playStickStrike()}
             className="flex items-center gap-3 group cursor-pointer"
           >
             <img
@@ -150,12 +141,12 @@ export const HeaderHUD: React.FC<HeaderHUDProps> = ({
               alt="KSHA Official Seal"
               className="w-11 h-11 object-contain transition-transform group-hover:scale-105"
             />
-            <div>
-              <span className="disp text-2xl tracking-[0.06em] text-black group-hover:text-[#E3000F] transition-colors block">
+            <div className="flex flex-col justify-center text-left">
+              <span className="disp text-2xl sm:text-[26px] tracking-[0.04em] text-black group-hover:text-[#E3000F] transition-colors leading-none block">
                 KSHA
               </span>
-              <span className="text-[10px] font-mono uppercase tracking-widest text-[#5C5350] block -mt-1">
-                ESTD. 1937 · BENGALURU
+              <span className="text-[10px] sm:text-[11px] font-mono uppercase tracking-wider text-[#5C5350] whitespace-nowrap leading-tight block mt-1">
+                Estb 1937 · Bengaluru
               </span>
             </div>
           </a>
@@ -164,100 +155,65 @@ export const HeaderHUD: React.FC<HeaderHUDProps> = ({
           <nav aria-label="Main" className="hidden lg:flex items-center gap-1 font-mono text-xs uppercase tracking-[0.14em]">
             <a
               href="#cup"
-              onClick={() => soundEngine.playSplitFlap()}
               className="px-3 py-2 text-black hover:text-[#E3000F] transition-colors font-medium"
             >
               {lang === 'kn' ? 'ಟ್ರಾವಂಕೋರ್ ಕಪ್' : 'The Cup'}
             </a>
             <a
               href="#battlegrounds"
-              onClick={() => soundEngine.playSplitFlap()}
               className="px-3 py-2 text-black hover:text-[#E3000F] transition-colors font-medium"
             >
               {lang === 'kn' ? 'ಲೀಗ್' : 'The League'}
             </a>
             <a
               href="#cradles"
-              onClick={() => soundEngine.playSplitFlap()}
               className="px-3 py-2 text-black hover:text-[#E3000F] transition-colors font-medium"
             >
               {lang === 'kn' ? 'ಅಕಾಡೆಮಿ & ಜಿಲ್ಲೆಗಳು' : 'The Heirs'}
             </a>
             <a
               href="#immortals"
-              onClick={() => soundEngine.playSplitFlap()}
               className="px-3 py-2 text-black hover:text-[#E3000F] transition-colors font-medium"
             >
               {lang === 'kn' ? '೧೫ ದಿಗ್ಗಜರು' : 'The Legends'}
             </a>
             <a
               href="#colosseum"
-              onClick={() => soundEngine.playSplitFlap()}
               className="px-3 py-2 text-black hover:text-[#E3000F] transition-colors font-medium"
             >
               {lang === 'kn' ? 'ಕ್ರೀಡಾಂಗಣ' : 'The Stadium'}
             </a>
             <a
               href="#pavilion"
-              onClick={() => soundEngine.playGloryChime()}
               className="px-3 py-2 text-black hover:text-[#E3000F] transition-colors font-medium"
             >
               {lang === 'kn' ? 'ಪ್ರೈವೇಟ್ ಕ್ಲಬ್' : 'The Club'}
             </a>
             <a
               href="#booking-facilities"
-              onClick={() => soundEngine.playStickStrike()}
               className="px-3 py-2 text-black hover:text-[#E3000F] transition-colors font-medium"
             >
               {lang === 'kn' ? 'ಬುಕಿಂಗ್ಸ್' : 'Bookings'}
             </a>
             <a
               href="#vault"
-              onClick={() => soundEngine.playSplitFlap()}
               className="px-3 py-2 text-black hover:text-[#E3000F] transition-colors font-medium"
             >
               {lang === 'kn' ? 'ಆಡಳಿತ' : 'Gazette'}
             </a>
             <a
               href="#booking-facilities"
-              onClick={() => soundEngine.playGloryChime()}
               className="ml-2 px-4 py-2 bg-[#E3000F] hover:bg-[#9E000B] text-white font-bold transition-all shadow-sm"
             >
               {lang === 'kn' ? 'ಬುಕ್ ಮಾಡಿ' : 'Book Hall'}
             </a>
           </nav>
 
-          {/* Right Action Controls: Audio & Command Palette */}
+          {/* Right Action Controls: Command Palette Directory */}
           <div className="flex items-center gap-2.5">
-            {/* Audio Toggle */}
-            <button
-              onClick={toggleSound}
-              className={`flex items-center gap-1.5 px-2.5 py-1.5 rounded text-xs font-mono border transition-all ${
-                isAudioActive
-                  ? 'bg-red-50 text-[#E3000F] border-[#E3000F] font-semibold'
-                  : 'bg-neutral-50 text-[#5C5350] border-neutral-300 hover:border-neutral-400 hover:text-black'
-              }`}
-              title="Toggle Stadium Synthesizer Drone"
-            >
-              {isAudioActive ? (
-                <>
-                  <Volume2 className="w-3.5 h-3.5 text-[#E3000F] animate-pulse" />
-                  <span className="hidden sm:inline text-[10px] tracking-wider uppercase">SOUND ON</span>
-                </>
-              ) : (
-                <>
-                  <VolumeX className="w-3.5 h-3.5 text-[#5C5350]" />
-                  <span className="hidden sm:inline text-[10px] tracking-wider uppercase">AUDIO</span>
-                </>
-              )}
-            </button>
-
             {/* Spotlight Command Palette Trigger */}
             <button
-              onClick={() => {
-                soundEngine.playSplitFlap();
-                onOpenCommandPalette();
-              }}
+              onClick={onOpenCommandPalette}
               className="flex items-center gap-2 px-3 py-1.5 rounded bg-neutral-50 border border-neutral-300 hover:border-[#E3000F] text-neutral-900 transition-all text-xs font-mono group shadow-xs"
             >
               <Search className="w-3.5 h-3.5 text-[#5C5350] group-hover:text-[#E3000F] transition-colors" />

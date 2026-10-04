@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { Olympian } from '../data/kshaData';
-import { X, Award, Medal, Trophy, Share2, Copy, Check, Volume2, Play, Pause, MapPin } from 'lucide-react';
-import { soundEngine } from '../utils/audio';
+import { X, Award, Medal, Trophy, Share2, Copy, Check, MapPin } from 'lucide-react';
 
 interface OlympianDrawerProps {
   athlete: Olympian | null;
@@ -11,8 +10,6 @@ interface OlympianDrawerProps {
 
 export const OlympianDrawer: React.FC<OlympianDrawerProps> = ({ athlete, onClose, lang }) => {
   const [copied, setCopied] = useState(false);
-  const [isPlayingAudio, setIsPlayingAudio] = useState(false);
-  const [audioProgress, setAudioProgress] = useState(0);
   const drawerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -29,26 +26,7 @@ export const OlympianDrawer: React.FC<OlympianDrawerProps> = ({ athlete, onClose
     };
   }, [athlete, onClose]);
 
-  // Audio simulation timer
   useEffect(() => {
-    let timer: NodeJS.Timeout;
-    if (isPlayingAudio) {
-      timer = setInterval(() => {
-        setAudioProgress((prev) => {
-          if (prev >= 100) {
-            setIsPlayingAudio(false);
-            return 0;
-          }
-          return prev + 10;
-        });
-      }, 400);
-    }
-    return () => clearInterval(timer);
-  }, [isPlayingAudio]);
-
-  useEffect(() => {
-    setIsPlayingAudio(false);
-    setAudioProgress(0);
     setCopied(false);
   }, [athlete]);
 
@@ -58,18 +36,7 @@ export const OlympianDrawer: React.FC<OlympianDrawerProps> = ({ athlete, onClose
     const citation = `${athlete.name} (${athlete.kannadaName}) · ${athlete.games} · ${athlete.position}. "${athlete.myth}" — Official KSHA Roll of Honour.`;
     navigator.clipboard.writeText(citation);
     setCopied(true);
-    soundEngine.playSplitFlap();
     setTimeout(() => setCopied(false), 2500);
-  };
-
-  const handleToggleAudio = () => {
-    if (!isPlayingAudio) {
-      soundEngine.playGoalRoar();
-      setIsPlayingAudio(true);
-      setAudioProgress(0);
-    } else {
-      setIsPlayingAudio(false);
-    }
   };
 
   return (
@@ -153,43 +120,6 @@ export const OlympianDrawer: React.FC<OlympianDrawerProps> = ({ athlete, onClose
             </div>
           )}
 
-          {/* Audio Synthesizer / Audio Tribute */}
-          <div className="p-4 rounded-xl bg-neutral-50 border border-neutral-200">
-            <div className="flex items-center justify-between mb-2">
-              <div className="flex items-center gap-2 text-xs font-mono font-bold text-neutral-800">
-                <Volume2 className="w-4 h-4 text-[#E3000F]" />
-                <span>ARCHIVAL STADIUM TRIBUTE</span>
-              </div>
-              <span className="text-[10px] font-mono text-neutral-500">
-                {isPlayingAudio ? `${audioProgress}%` : 'READY'}
-              </span>
-            </div>
-            
-            {/* Progress Bar */}
-            <div className="w-full bg-neutral-200 h-1.5 rounded-full overflow-hidden mb-3">
-              <div
-                className="bg-[#E3000F] h-full transition-all duration-300"
-                style={{ width: `${audioProgress}%` }}
-              />
-            </div>
-
-            <button
-              onClick={handleToggleAudio}
-              className="w-full py-2 px-3 rounded-lg bg-white border border-neutral-300 hover:border-black text-xs font-mono font-bold uppercase tracking-wider flex items-center justify-center gap-2 transition-colors shadow-sm"
-            >
-              {isPlayingAudio ? (
-                <>
-                  <Pause className="w-3.5 h-3.5 text-[#E3000F]" />
-                  <span>PAUSE TRIBUTE</span>
-                </>
-              ) : (
-                <>
-                  <Play className="w-3.5 h-3.5 text-[#E3000F] fill-current" />
-                  <span>PLAY AUDIO FANFARE</span>
-                </>
-              )}
-            </button>
-          </div>
 
           {/* Key Quick Stats Grid */}
           <div className="grid grid-cols-2 gap-3 text-xs font-mono">
