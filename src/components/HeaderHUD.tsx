@@ -219,13 +219,6 @@ export const HeaderHUD: React.FC<HeaderHUDProps> = ({
               {lang === 'kn' ? 'ಆಡಳಿತ' : 'Gazette'}
             </a>
             <a
-              href="#appendix"
-              onClick={() => soundEngine.playSplitFlap()}
-              className="px-3 py-2 text-[#5C5350] hover:text-[#E3000F] transition-colors font-medium"
-            >
-              {lang === 'kn' ? 'ಅನುಬಂಧ' : 'Appendix'}
-            </a>
-            <a
               href="#booking-facilities"
               onClick={() => soundEngine.playGloryChime()}
               className="ml-2 px-4 py-2 bg-[#E3000F] hover:bg-[#9E000B] text-white font-bold transition-all shadow-sm"

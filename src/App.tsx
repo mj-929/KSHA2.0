@@ -12,7 +12,6 @@ import { TheColosseum } from './components/TheColosseum';
 import { GentlemensPavilion } from './components/GentlemensPavilion';
 import { BookingFacilitiesSection } from './components/BookingFacilitiesSection';
 import { ImperialVault } from './components/ImperialVault';
-import { DataProvenanceAppendix } from './components/DataProvenanceAppendix';
 import { FinalePitchIsOpen } from './components/FinalePitchIsOpen';
 import { FooterColophon } from './components/FooterColophon';
 import { CommandPalette } from './components/CommandPalette';
@@ -81,9 +80,6 @@ export function App() {
 
         {/* Chapter VII · The Roll Call & Statutory Imperial Vault (Census & RTI) */}
         <ImperialVault lang={lang} />
-
-        {/* Official Appendix · Full Data Provenance & Source Document Register */}
-        <DataProvenanceAppendix lang={lang} />
 
         {/* Finale · The Pitch Is Open */}
         <FinalePitchIsOpen lang={lang} />
