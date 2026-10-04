@@ -64,8 +64,8 @@ export const FooterColophon: React.FC<{ lang: 'en' | 'kn' }> = ({ lang }) => {
                 </a>
               </li>
               <li>
-                <a href="#colosseum" onClick={() => soundEngine.playSplitFlap()} className="hover:text-[#E3000F] transition-colors">
-                  Langford Town Stadium (1,200 Lux)
+                <a href="#colosseum" className="hover:text-[#E3000F] transition-colors">
+                  Langford Town Hockey Stadium (360° Tour)
                 </a>
               </li>
               <li>

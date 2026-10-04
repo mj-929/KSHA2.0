@@ -317,9 +317,9 @@ export const CONSTITUTIONAL_OATHS = [
   },
   {
     num: 'IV',
-    title: 'COLOSSEUM CUSTODIANSHIP',
+    title: 'STADIUM CUSTODIANSHIP',
     kannada: 'ಅಂತಾರಾಷ್ಟ್ರೀಯ ದರ್ಜೆಯ ಸಿಂಥೆಟಿಕ್ ಟರ್ಫ್ ನಿರ್ವಹಣೆ',
-    text: 'To maintain an international standard synthetic turf hockey stadium at Langford Town equipped with 1,200 Lux broadcast-ready floodlights and comprehensive athlete recovery suites.'
+    text: 'To maintain an international standard synthetic turf hockey stadium at Langford Town equipped with tournament-standard floodlights and athlete facilities.'
   },
   {
     num: 'V',
@@ -427,7 +427,7 @@ export const FIXTURES_DATA = [
     cup: 'KSHA Super Division League',
     match: 'ASC Centre vs Rail Wheel Factory',
     date: 'Saturday, 17:30 IST',
-    pitch: 'Main Pitch 1 · Under 1,200 Lux Floodlights',
+    pitch: 'Main Pitch 1 · KSHA Hockey Stadium',
     round: 'Super-6 Round Robin Clash',
     badge: 'LIVE ON STADIUM HUD'
   },

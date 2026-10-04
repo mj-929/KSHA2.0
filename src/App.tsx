@@ -69,7 +69,7 @@ export function App() {
         {/* Chapter IV · The Legends (R.V. Raghu Prasad, Honored Legends & 15 Olympians) */}
         <The15Immortals lang={lang} />
 
-        {/* Chapter V · The Colosseum (Langford Town Stadium at 1,200 Lux) */}
+        {/* Chapter V · 360° Virtual Tour (KSHA Stadium & Clubhouse Walkthrough) */}
         <TheColosseum lang={lang} />
 
         {/* Chapter VI · The Club (Mini Sports Complex, Billiards, 168 Reciprocal Clubs) */}
