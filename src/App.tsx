@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { HeaderHUD } from './components/HeaderHUD';
 import { NavigationRail } from './components/NavigationRail';
+import { WebGL3DExperience } from './components/WebGL3DExperience';
 import { HeroOverture } from './components/HeroOverture';
 import { RedWireTicker } from './components/RedWireTicker';
 import { SplitFlapCounters } from './components/SplitFlapCounters';
@@ -32,6 +33,9 @@ export function App() {
         isMotionPaused ? 'motion-reduce' : ''
       }`}
     >
+      {/* Global Interactive 3D WebGL Canvas Layer */}
+      <WebGL3DExperience isMotionPaused={isMotionPaused} />
+
       {/* Top Floating Utility HUD with Accessibility & Official Crest */}
       <HeaderHUD
         onOpenCommandPalette={() => setIsCommandPaletteOpen(true)}

@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react';
 import { Olympian } from '../data/kshaData';
 import { ArrowLeft, ArrowRight, Award, Trophy, ChevronRight } from 'lucide-react';
 import { soundEngine } from '../utils/audio';
+import { Card3DTilt } from './Card3DTilt';
 
 interface FeaturedLegendsShowcaseProps {
   athletes: Olympian[];
@@ -80,75 +81,80 @@ export const FeaturedLegendsShowcase: React.FC<FeaturedLegendsShowcaseProps> = (
         style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
       >
         {featured.map((athlete, idx) => (
-          <article
+          <Card3DTilt
             key={athlete.id}
-            role="button"
-            tabIndex={0}
-            className="flex-shrink-0 w-[300px] sm:w-[350px] snap-start rounded-2xl bg-white border border-[#E6DAD8] hover:border-black shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col group cursor-pointer focus:outline-hidden focus:ring-2 focus:ring-[#E3000F]"
-            onClick={() => onSelectAthlete(athlete)}
-            onKeyDown={(e) => {
-              if (e.key === 'Enter' || e.key === ' ') {
-                e.preventDefault();
-                onSelectAthlete(athlete);
-              }
-            }}
+            staggerIndex={idx}
+            className="flex-shrink-0 w-[300px] sm:w-[350px] snap-start"
           >
-            {/* Portrait Cover */}
-            <div className="relative h-64 bg-neutral-900 overflow-hidden">
-              {athlete.image ? (
-                <img
-                  src={athlete.image}
-                  alt={athlete.name}
-                  className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
-                />
-              ) : (
-                <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-neutral-800 to-neutral-950">
-                  <span className="font-cinzel text-5xl font-black text-amber-400/40">
-                    {athlete.name.charAt(0)}
-                  </span>
-                </div>
-              )}
+            <article
+              role="button"
+              tabIndex={0}
+              className="w-full h-full rounded-2xl bg-white border border-[#E6DAD8] hover:border-black shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col group cursor-pointer focus:outline-hidden focus:ring-2 focus:ring-[#E3000F]"
+              onClick={() => onSelectAthlete(athlete)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  onSelectAthlete(athlete);
+                }
+              }}
+            >
+              {/* Portrait Cover */}
+              <div className="relative h-64 bg-neutral-900 overflow-hidden">
+                {athlete.image ? (
+                  <img
+                    src={athlete.image}
+                    alt={athlete.name}
+                    className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                  />
+                ) : (
+                  <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-neutral-800 to-neutral-950">
+                    <span className="font-cinzel text-5xl font-black text-amber-400/40">
+                      {athlete.name.charAt(0)}
+                    </span>
+                  </div>
+                )}
 
-              {/* Gradient Scrim */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent flex flex-col justify-between p-4">
-                <div className="flex justify-between items-start">
-                  <span className="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider bg-black/70 backdrop-blur-md text-amber-300 border border-amber-400/40">
-                    {athlete.games}
-                  </span>
-                  <span className="w-7 h-7 rounded-full bg-[#E3000F] text-white text-[11px] font-mono font-bold flex items-center justify-center shadow-md">
-                    {idx + 1}
-                  </span>
-                </div>
+                {/* Gradient Scrim */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent flex flex-col justify-between p-4">
+                  <div className="flex justify-between items-start">
+                    <span className="px-2.5 py-0.5 rounded-full text-[10px] font-mono font-bold uppercase tracking-wider bg-black/70 backdrop-blur-md text-amber-300 border border-amber-400/40">
+                      {athlete.games}
+                    </span>
+                    <span className="w-7 h-7 rounded-full bg-[#E3000F] text-white text-[11px] font-mono font-bold flex items-center justify-center shadow-md">
+                      {idx + 1}
+                    </span>
+                  </div>
 
-                <div>
-                  <span className="text-[10px] font-mono text-[#E3000F] uppercase font-bold tracking-wider block">
-                    {athlete.position}
-                  </span>
-                  <h4 className="disp text-2xl text-white mt-0.5 drop-shadow-sm">
-                    {athlete.name}
-                  </h4>
-                  <p className="font-kannada text-xs font-bold text-neutral-300">
-                    {athlete.kannadaName}
-                  </p>
+                  <div>
+                    <span className="text-[10px] font-mono text-[#E3000F] uppercase font-bold tracking-wider block">
+                      {athlete.position}
+                    </span>
+                    <h4 className="disp text-2xl text-white mt-0.5 drop-shadow-sm">
+                      {athlete.name}
+                    </h4>
+                    <p className="font-kannada text-xs font-bold text-neutral-300">
+                      {athlete.kannadaName}
+                    </p>
+                  </div>
                 </div>
               </div>
-            </div>
 
-            {/* Card Content */}
-            <div className="p-5 flex-1 flex flex-col justify-between space-y-4 bg-white">
-              <p className="whisper text-base text-[#3B3330] line-clamp-3 leading-snug">
-                &ldquo;{athlete.myth}&rdquo;
-              </p>
+              {/* Card Content */}
+              <div className="p-5 flex-1 flex flex-col justify-between space-y-4 bg-white">
+                <p className="whisper text-base text-[#3B3330] line-clamp-3 leading-snug">
+                  &ldquo;{athlete.myth}&rdquo;
+                </p>
 
-              <div className="pt-3 border-t border-[#E6DAD8] flex items-center justify-between text-xs font-mono">
-                <span className="text-neutral-500">{athlete.district}</span>
-                <span className="text-[#E3000F] font-bold flex items-center gap-1 group-hover:translate-x-1 transition-transform">
-                  <span>View Dossier</span>
-                  <ChevronRight className="w-3.5 h-3.5" />
-                </span>
+                <div className="pt-3 border-t border-[#E6DAD8] flex items-center justify-between text-xs font-mono">
+                  <span className="text-neutral-500">{athlete.district}</span>
+                  <span className="text-[#E3000F] font-bold flex items-center gap-1 group-hover:translate-x-1 transition-transform">
+                    <span>View Dossier</span>
+                    <ChevronRight className="w-3.5 h-3.5" />
+                  </span>
+                </div>
               </div>
-            </div>
-          </article>
+            </article>
+          </Card3DTilt>
         ))}
       </div>
     </div>

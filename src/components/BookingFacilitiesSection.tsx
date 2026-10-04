@@ -13,6 +13,7 @@ import {
   X,
   Send
 } from 'lucide-react';
+import { Card3DTilt } from './Card3DTilt';
 
 interface HallSpace {
   id: string;
@@ -429,73 +430,72 @@ export const BookingFacilitiesSection: React.FC<BookingFacilitiesSectionProps> =
         {/* TAB 1: Minimalist Party Halls Cards */}
         {activeTab === 'halls' && (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {HALL_SPACES.map((hall) => {
+            {HALL_SPACES.map((hall, idx) => {
               const defaultTier = hall.tiers[0];
               const hasMultipleTiers = hall.tiers.length > 1;
 
               return (
-                <article
-                  key={hall.id}
-                  className="bg-white rounded-xl border border-[#E6DAD8] hover:border-black transition-all duration-300 flex flex-col justify-between p-6 shadow-xs hover:shadow-md group"
-                >
-                  <div>
-                    {/* Top Meta Tag */}
-                    <div className="flex items-center justify-between text-[11px] font-mono text-neutral-500 mb-3 pb-2 border-b border-neutral-100">
-                      <span className="uppercase tracking-wider font-semibold text-neutral-700">
-                        {hall.floor}
-                      </span>
-                      <span className="flex items-center gap-1 text-[#E3000F] font-bold">
-                        <Users className="w-3 h-3" />
-                        {hall.capacity}
-                      </span>
-                    </div>
-
-                    {/* Title */}
-                    <h3 className="disp text-2xl text-black group-hover:text-[#E3000F] transition-colors leading-tight">
-                      {hall.name}
-                    </h3>
-                    <p className="font-kannada text-xs text-neutral-400 font-medium mt-1 mb-3">
-                      {hall.name_kn}
-                    </p>
-
-                    {/* Purpose */}
-                    <p className="text-xs text-[#5C5350] leading-relaxed mb-6 font-sans">
-                      {hall.purpose}
-                    </p>
-
-                    {/* Minimalist Pricing Summary */}
-                    <div className="py-3 px-3.5 rounded-lg bg-[#FAF7F6] border border-[#EFE8E6] mb-5">
-                      <div className="flex items-baseline justify-between">
-                        <span className="text-[10px] font-mono uppercase tracking-wider text-neutral-500">
-                          {hasMultipleTiers ? 'Starting from' : 'Total Payable'}
+                <Card3DTilt key={hall.id} staggerIndex={idx % 6} className="h-full">
+                  <article className="bg-white rounded-xl border border-[#E6DAD8] hover:border-black transition-all duration-300 flex flex-col justify-between p-6 shadow-xs hover:shadow-md group h-full">
+                    <div>
+                      {/* Top Meta Tag */}
+                      <div className="flex items-center justify-between text-[11px] font-mono text-neutral-500 mb-3 pb-2 border-b border-neutral-100">
+                        <span className="uppercase tracking-wider font-semibold text-neutral-700">
+                          {hall.floor}
                         </span>
-                        <div className="text-right">
-                          <span className="font-mono text-lg font-bold text-black">
-                            ₹{hall.startingPrice.toLocaleString('en-IN')}/-
-                          </span>
-                          <span className="text-[10px] font-mono text-neutral-400 block -mt-0.5">
-                            incl. 18% GST
-                          </span>
-                        </div>
+                        <span className="flex items-center gap-1 text-[#E3000F] font-bold">
+                          <Users className="w-3 h-3" />
+                          {hall.capacity}
+                        </span>
                       </div>
 
-                      {hasMultipleTiers && (
-                        <p className="text-[10px] font-mono text-neutral-500 mt-2 pt-2 border-t border-[#E8DFDD]">
-                          {hall.tiers.length} event packages (₹{hall.tiers[0].total.toLocaleString('en-IN')} – ₹{hall.tiers[hall.tiers.length - 1].total.toLocaleString('en-IN')})
-                        </p>
-                      )}
-                    </div>
-                  </div>
+                      {/* Title */}
+                      <h3 className="disp text-2xl text-black group-hover:text-[#E3000F] transition-colors leading-tight">
+                        {hall.name}
+                      </h3>
+                      <p className="font-kannada text-xs text-neutral-400 font-medium mt-1 mb-3">
+                        {hall.name_kn}
+                      </p>
 
-                  {/* Clean Bottom Action Button */}
-                  <button
-                    onClick={() => openHallModal(hall, 0)}
-                    className="w-full py-2.5 px-4 rounded-lg bg-black text-white hover:bg-[#E3000F] font-mono text-xs uppercase tracking-wider font-semibold transition-colors flex items-center justify-center gap-1.5"
-                  >
-                    <span>Reserve / Inquire</span>
-                    <ArrowUpRight className="w-3.5 h-3.5" />
-                  </button>
-                </article>
+                      {/* Purpose */}
+                      <p className="text-xs text-[#5C5350] leading-relaxed mb-6 font-sans">
+                        {hall.purpose}
+                      </p>
+
+                      {/* Minimalist Pricing Summary */}
+                      <div className="py-3 px-3.5 rounded-lg bg-[#FAF7F6] border border-[#EFE8E6] mb-5">
+                        <div className="flex items-baseline justify-between">
+                          <span className="text-[10px] font-mono uppercase tracking-wider text-neutral-500">
+                            {hasMultipleTiers ? 'Starting from' : 'Total Payable'}
+                          </span>
+                          <div className="text-right">
+                            <span className="font-mono text-lg font-bold text-black">
+                              ₹{hall.startingPrice.toLocaleString('en-IN')}/-
+                            </span>
+                            <span className="text-[10px] font-mono text-neutral-400 block -mt-0.5">
+                              incl. 18% GST
+                            </span>
+                          </div>
+                        </div>
+
+                        {hasMultipleTiers && (
+                          <p className="text-[10px] font-mono text-neutral-500 mt-2 pt-2 border-t border-[#E8DFDD]">
+                            {hall.tiers.length} event packages (₹{hall.tiers[0].total.toLocaleString('en-IN')} – ₹{hall.tiers[hall.tiers.length - 1].total.toLocaleString('en-IN')})
+                          </p>
+                        )}
+                      </div>
+                    </div>
+
+                    {/* Clean Bottom Action Button */}
+                    <button
+                      onClick={() => openHallModal(hall, 0)}
+                      className="w-full py-2.5 px-4 rounded-lg bg-black text-white hover:bg-[#E3000F] font-mono text-xs uppercase tracking-wider font-semibold transition-colors flex items-center justify-center gap-1.5"
+                    >
+                      <span>Reserve / Inquire</span>
+                      <ArrowUpRight className="w-3.5 h-3.5" />
+                    </button>
+                  </article>
+                </Card3DTilt>
               );
             })}
           </div>
@@ -504,67 +504,66 @@ export const BookingFacilitiesSection: React.FC<BookingFacilitiesSectionProps> =
         {/* TAB 2: Minimalist Guest Rooms */}
         {activeTab === 'rooms' && (
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {ROOM_SPACES.map((room) => (
-              <article
-                key={room.id}
-                className="bg-white rounded-xl border border-[#E6DAD8] hover:border-black transition-all duration-300 flex flex-col justify-between p-6 shadow-xs hover:shadow-md group"
-              >
-                <div>
-                  <div className="flex items-center justify-between text-[11px] font-mono text-neutral-500 mb-3 pb-2 border-b border-neutral-100">
-                    <span className="uppercase tracking-wider font-semibold text-neutral-700">
-                      EC Authorized Lodging
-                    </span>
-                    <span className="text-emerald-700 font-bold">
-                      {room.type}
-                    </span>
-                  </div>
-
-                  <h3 className="disp text-2xl text-black group-hover:text-[#E3000F] transition-colors leading-tight">
-                    {room.name}
-                  </h3>
-                  <p className="font-kannada text-xs text-neutral-400 font-medium mt-1 mb-4">
-                    {room.name_kn}
-                  </p>
-
-                  {/* Clean Room Features List */}
-                  <ul className="space-y-2 mb-6 font-mono text-xs text-[#5C5350]">
-                    {room.features.map((feat, i) => (
-                      <li key={i} className="flex items-center gap-2">
-                        <span className="w-1 h-1 rounded-full bg-[#E3000F]" />
-                        <span>{feat}</span>
-                      </li>
-                    ))}
-                  </ul>
-
-                  {/* Price Block */}
-                  <div className="py-3 px-3.5 rounded-lg bg-[#FAF7F6] border border-[#EFE8E6] mb-5 flex items-baseline justify-between">
-                    <div>
-                      <span className="text-[10px] font-mono uppercase tracking-wider text-neutral-500 block">
-                        Per Night Tariff
+            {ROOM_SPACES.map((room, idx) => (
+              <Card3DTilt key={room.id} staggerIndex={idx} className="h-full">
+                <article className="bg-white rounded-xl border border-[#E6DAD8] hover:border-black transition-all duration-300 flex flex-col justify-between p-6 shadow-xs hover:shadow-md group h-full">
+                  <div>
+                    <div className="flex items-center justify-between text-[11px] font-mono text-neutral-500 mb-3 pb-2 border-b border-neutral-100">
+                      <span className="uppercase tracking-wider font-semibold text-neutral-700">
+                        EC Authorized Lodging
                       </span>
-                      <span className="text-[10px] font-mono text-neutral-400">
-                        Base ₹{room.baseRent} + 12% GST
+                      <span className="text-emerald-700 font-bold">
+                        {room.type}
                       </span>
                     </div>
-                    <div className="text-right">
-                      <span className="font-mono text-xl font-bold text-black">
-                        ₹{room.total.toLocaleString('en-IN')}/-
-                      </span>
-                      <span className="text-[10px] font-mono text-neutral-500 block">
-                        net per night
-                      </span>
+
+                    <h3 className="disp text-2xl text-black group-hover:text-[#E3000F] transition-colors leading-tight">
+                      {room.name}
+                    </h3>
+                    <p className="font-kannada text-xs text-neutral-400 font-medium mt-1 mb-4">
+                      {room.name_kn}
+                    </p>
+
+                    {/* Clean Room Features List */}
+                    <ul className="space-y-2 mb-6 font-mono text-xs text-[#5C5350]">
+                      {room.features.map((feat, i) => (
+                        <li key={i} className="flex items-center gap-2">
+                          <span className="w-1 h-1 rounded-full bg-[#E3000F]" />
+                          <span>{feat}</span>
+                        </li>
+                      ))}
+                    </ul>
+
+                    {/* Price Block */}
+                    <div className="py-3 px-3.5 rounded-lg bg-[#FAF7F6] border border-[#EFE8E6] mb-5 flex items-baseline justify-between">
+                      <div>
+                        <span className="text-[10px] font-mono uppercase tracking-wider text-neutral-500 block">
+                          Per Night Tariff
+                        </span>
+                        <span className="text-[10px] font-mono text-neutral-400">
+                          Base ₹{room.baseRent} + 12% GST
+                        </span>
+                      </div>
+                      <div className="text-right">
+                        <span className="font-mono text-xl font-bold text-black">
+                          ₹{room.total.toLocaleString('en-IN')}/-
+                        </span>
+                        <span className="text-[10px] font-mono text-neutral-500 block">
+                          net per night
+                        </span>
+                      </div>
                     </div>
                   </div>
-                </div>
 
-                <button
-                  onClick={() => openRoomModal(room)}
-                  className="w-full py-2.5 px-4 rounded-lg bg-black text-white hover:bg-[#E3000F] font-mono text-xs uppercase tracking-wider font-semibold transition-colors flex items-center justify-center gap-1.5"
-                >
-                  <span>Book Guest Room</span>
-                  <ArrowUpRight className="w-3.5 h-3.5" />
-                </button>
-              </article>
+                  <button
+                    onClick={() => openRoomModal(room)}
+                    className="w-full py-2.5 px-4 rounded-lg bg-black text-white hover:bg-[#E3000F] font-mono text-xs uppercase tracking-wider font-semibold transition-colors flex items-center justify-center gap-1.5"
+                  >
+                    <span>Book Guest Room</span>
+                    <ArrowUpRight className="w-3.5 h-3.5" />
+                  </button>
+                </article>
+              </Card3DTilt>
             ))}
           </div>
         )}

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { DISTRICT_CRADLES, DistrictUnit } from '../data/kshaData';
 import { MapPin, Navigation, Shield, Compass, Sparkles } from 'lucide-react';
 import { soundEngine } from '../utils/audio';
+import { Card3DTilt } from './Card3DTilt';
 
 interface The18CradlesProps {
   lang: 'en' | 'kn';
@@ -32,29 +33,35 @@ export const The18Cradles: React.FC<The18CradlesProps> = ({ lang }) => {
 
           {/* Key Academy Stats (The Heirs Metrics) */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-6 border-t border-[#C9B8B5]">
-            <div className="border-t-2 border-[#C9B8B5] pt-4">
-              <div className="disp goldtxt text-7xl sm:text-8xl lg:text-9xl">70</div>
-              <h3 className="disp text-2xl text-black mt-1">Players in the academy</h3>
-              <p className="text-sm text-[#3B3330] mt-2 max-w-xs font-sans">
-                School-going boys and girls train at weekends, then play for clubs across the four league tiers.
-              </p>
-            </div>
+            <Card3DTilt staggerIndex={0}>
+              <div className="border-t-2 border-[#C9B8B5] pt-4 p-4 rounded-xl bg-white/70 backdrop-blur-xs border border-[#E6DAD8]/60 shadow-xs h-full">
+                <div className="disp goldtxt text-7xl sm:text-8xl lg:text-9xl">70</div>
+                <h3 className="disp text-2xl text-black mt-1">Players in the academy</h3>
+                <p className="text-sm text-[#3B3330] mt-2 max-w-xs font-sans">
+                  School-going boys and girls train at weekends, then play for clubs across the four league tiers.
+                </p>
+              </div>
+            </Card3DTilt>
 
-            <div className="border-t-2 border-[#C9B8B5] pt-4">
-              <div className="disp goldtxt text-7xl sm:text-8xl lg:text-9xl">2</div>
-              <h3 className="disp text-2xl text-black mt-1">Decades and counting</h3>
-              <p className="text-sm text-[#3B3330] mt-2 max-w-xs font-sans">
-                The KSHA Hockey Academy has been nurturing grassroots talent in Langford Town for two decades.
-              </p>
-            </div>
+            <Card3DTilt staggerIndex={1}>
+              <div className="border-t-2 border-[#C9B8B5] pt-4 p-4 rounded-xl bg-white/70 backdrop-blur-xs border border-[#E6DAD8]/60 shadow-xs h-full">
+                <div className="disp goldtxt text-7xl sm:text-8xl lg:text-9xl">2</div>
+                <h3 className="disp text-2xl text-black mt-1">Decades and counting</h3>
+                <p className="text-sm text-[#3B3330] mt-2 max-w-xs font-sans">
+                  The KSHA Hockey Academy has been nurturing grassroots talent in Langford Town for two decades.
+                </p>
+              </div>
+            </Card3DTilt>
 
-            <div className="border-t-2 border-[#C9B8B5] pt-4">
-              <div className="disp goldtxt text-7xl sm:text-8xl lg:text-9xl">40</div>
-              <h3 className="disp text-2xl text-black mt-1">Summer camp trainees</h3>
-              <p className="text-sm text-[#3B3330] mt-2 max-w-xs font-sans">
-                Around forty high-potential junior players attended the April–May 2025 intensive residential camp.
-              </p>
-            </div>
+            <Card3DTilt staggerIndex={2}>
+              <div className="border-t-2 border-[#C9B8B5] pt-4 p-4 rounded-xl bg-white/70 backdrop-blur-xs border border-[#E6DAD8]/60 shadow-xs h-full">
+                <div className="disp goldtxt text-7xl sm:text-8xl lg:text-9xl">40</div>
+                <h3 className="disp text-2xl text-black mt-1">Summer camp trainees</h3>
+                <p className="text-sm text-[#3B3330] mt-2 max-w-xs font-sans">
+                  Around forty high-potential junior players attended the April–May 2025 intensive residential camp.
+                </p>
+              </div>
+            </Card3DTilt>
           </div>
 
           <div className="mt-8 pt-4 border-t border-[#E6DAD8] flex flex-wrap items-center justify-between gap-4 text-xs font-mono text-[#5C5350]">
@@ -100,34 +107,35 @@ export const The18Cradles: React.FC<The18CradlesProps> = ({ lang }) => {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {filteredDistricts.map((district) => (
-              <div
-                key={district.id}
-                onClick={() => {
-                  soundEngine.playStickStrike();
-                  setActiveDistrict(district);
-                }}
-                className={`p-5 rounded-xl border transition-all cursor-pointer ${
-                  activeDistrict.id === district.id
-                    ? 'bg-[#FBF8F7] border-[#E3000F] shadow-sm'
-                    : 'bg-white border-[#E6DAD8] hover:border-[#8F8482]'
-                }`}
-              >
-                <div className="flex items-center justify-between mb-2">
-                  <span className="disp text-xl sm:text-2xl text-black">
-                    {district.name}
-                  </span>
-                  <span className="text-[10px] font-mono text-[#E3000F] uppercase font-bold px-2 py-0.5 rounded bg-red-50 border border-red-100">
-                    ESTD. {district.established}
-                  </span>
+            {filteredDistricts.map((district, idx) => (
+              <Card3DTilt key={district.id} staggerIndex={idx % 6} className="h-full">
+                <div
+                  onClick={() => {
+                    soundEngine.playStickStrike();
+                    setActiveDistrict(district);
+                  }}
+                  className={`p-5 rounded-xl border transition-all cursor-pointer h-full ${
+                    activeDistrict.id === district.id
+                      ? 'bg-[#FBF8F7] border-[#E3000F] shadow-sm'
+                      : 'bg-white border-[#E6DAD8] hover:border-[#8F8482]'
+                  }`}
+                >
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="disp text-xl sm:text-2xl text-black">
+                      {district.name}
+                    </span>
+                    <span className="text-[10px] font-mono text-[#E3000F] uppercase font-bold px-2 py-0.5 rounded bg-red-50 border border-red-100">
+                      ESTD. {district.established}
+                    </span>
+                  </div>
+                  <div className="text-xs font-mono text-[#5C5350] mb-2">
+                    HQ: {district.headquarters} · {district.zone}
+                  </div>
+                  <p className="text-xs text-[#3B3330] leading-relaxed">
+                    Key Talent: {district.keyTalent}
+                  </p>
                 </div>
-                <div className="text-xs font-mono text-[#5C5350] mb-2">
-                  HQ: {district.headquarters} · {district.zone}
-                </div>
-                <p className="text-xs text-[#3B3330] leading-relaxed">
-                  Key Talent: {district.keyTalent}
-                </p>
-              </div>
+              </Card3DTilt>
             ))}
           </div>
         </div>

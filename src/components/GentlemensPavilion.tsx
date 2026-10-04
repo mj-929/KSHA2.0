@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { CLUB_FACILITIES, RECIPROCAL_CLUBS, ClubFacility } from '../data/kshaData';
 import { Castle, Sparkles, Building2, Shield, HeartHandshake, CheckCircle2, X, Clock, MapPin, ArrowRight } from 'lucide-react';
 import { soundEngine } from '../utils/audio';
+import { Card3DTilt } from './Card3DTilt';
 
 interface GentlemensPavilionProps {
   lang: 'en' | 'kn';
@@ -41,37 +42,45 @@ export const GentlemensPavilion: React.FC<GentlemensPavilionProps> = ({ lang }) 
 
           {/* 4 Core Facility Highlights */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 pt-6 border-t border-[#C9B8B5]">
-            <div className="border-t-2 border-[#C9B8B5] pt-4">
-              <div className="disp goldtxt text-6xl sm:text-7xl lg:text-8xl">3</div>
-              <h3 className="disp text-2xl text-black mt-1">Badminton courts</h3>
-              <p className="text-xs text-[#3B3330] mt-2 font-sans">
-                Canadian maple hardwood shuttle courts, run by certified national badminton professionals.
-              </p>
-            </div>
+            <Card3DTilt staggerIndex={0}>
+              <div className="border-t-2 border-[#C9B8B5] pt-4 p-4 rounded-xl bg-white/70 backdrop-blur-xs border border-[#E6DAD8]/60 shadow-xs h-full">
+                <div className="disp goldtxt text-6xl sm:text-7xl lg:text-8xl">3</div>
+                <h3 className="disp text-2xl text-black mt-1">Badminton courts</h3>
+                <p className="text-xs text-[#3B3330] mt-2 font-sans">
+                  Canadian maple hardwood shuttle courts, run by certified national badminton professionals.
+                </p>
+              </div>
+            </Card3DTilt>
 
-            <div className="border-t-2 border-[#C9B8B5] pt-4">
-              <div className="disp goldtxt text-6xl sm:text-7xl lg:text-8xl">8</div>
-              <h3 className="disp text-2xl text-black mt-1">Billiards & snooker tables</h3>
-              <p className="text-xs text-[#3B3330] mt-2 font-sans">
-                Championship English slate draped in Strachan 6811 Gold cloth, with master coaching.
-              </p>
-            </div>
+            <Card3DTilt staggerIndex={1}>
+              <div className="border-t-2 border-[#C9B8B5] pt-4 p-4 rounded-xl bg-white/70 backdrop-blur-xs border border-[#E6DAD8]/60 shadow-xs h-full">
+                <div className="disp goldtxt text-6xl sm:text-7xl lg:text-8xl">8</div>
+                <h3 className="disp text-2xl text-black mt-1">Billiards & snooker tables</h3>
+                <p className="text-xs text-[#3B3330] mt-2 font-sans">
+                  Championship English slate draped in Strachan 6811 Gold cloth, with master coaching.
+                </p>
+              </div>
+            </Card3DTilt>
 
-            <div className="border-t-2 border-[#C9B8B5] pt-4">
-              <div className="disp goldtxt text-6xl sm:text-7xl lg:text-8xl">250</div>
-              <h3 className="disp text-2xl text-black mt-1">Guests on the terrace</h3>
-              <p className="text-xs text-[#3B3330] mt-2 font-sans">
-                The panoramic third-floor function hall seats up to 250 with open floodlit pitch vistas.
-              </p>
-            </div>
+            <Card3DTilt staggerIndex={2}>
+              <div className="border-t-2 border-[#C9B8B5] pt-4 p-4 rounded-xl bg-white/70 backdrop-blur-xs border border-[#E6DAD8]/60 shadow-xs h-full">
+                <div className="disp goldtxt text-6xl sm:text-7xl lg:text-8xl">250</div>
+                <h3 className="disp text-2xl text-black mt-1">Guests on the terrace</h3>
+                <p className="text-xs text-[#3B3330] mt-2 font-sans">
+                  The panoramic third-floor function hall seats up to 250 with open floodlit pitch vistas.
+                </p>
+              </div>
+            </Card3DTilt>
 
-            <div className="border-t-2 border-[#C9B8B5] pt-4">
-              <div className="disp goldtxt text-6xl sm:text-7xl lg:text-8xl">12</div>
-              <h3 className="disp text-2xl text-black mt-1">Renovated guest rooms</h3>
-              <p className="text-xs text-[#3B3330] mt-2 font-sans">
-                Boutique air-conditioned guest suites including an executive Presidential VIP suite.
-              </p>
-            </div>
+            <Card3DTilt staggerIndex={3}>
+              <div className="border-t-2 border-[#C9B8B5] pt-4 p-4 rounded-xl bg-white/70 backdrop-blur-xs border border-[#E6DAD8]/60 shadow-xs h-full">
+                <div className="disp goldtxt text-6xl sm:text-7xl lg:text-8xl">12</div>
+                <h3 className="disp text-2xl text-black mt-1">Renovated guest rooms</h3>
+                <p className="text-xs text-[#3B3330] mt-2 font-sans">
+                  Boutique air-conditioned guest suites including an executive Presidential VIP suite.
+                </p>
+              </div>
+            </Card3DTilt>
           </div>
         </div>
 
