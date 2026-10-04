@@ -96,6 +96,16 @@ export const FooterColophon: React.FC<{ lang: 'en' | 'kn' }> = ({ lang }) => {
                 </a>
               </li>
               <li>
+                <a href="#booking-facilities" onClick={() => soundEngine.playStickStrike()} className="hover:text-[#E3000F] transition-colors font-bold text-[#E3000F]">
+                  Party Halls & Guest Rooms Booking
+                </a>
+              </li>
+              <li>
+                <a href="#appendix" onClick={() => soundEngine.playSplitFlap()} className="hover:text-[#E3000F] transition-colors font-bold text-neutral-900">
+                  Data Provenance Appendix
+                </a>
+              </li>
+              <li>
                 <span className="text-[#5C5350]">GIGW 3.0 Accessible</span>
               </li>
             </ul>

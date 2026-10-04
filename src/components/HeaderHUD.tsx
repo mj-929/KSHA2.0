@@ -205,6 +205,13 @@ export const HeaderHUD: React.FC<HeaderHUDProps> = ({
               {lang === 'kn' ? 'ಪ್ರೈವೇಟ್ ಕ್ಲಬ್' : 'The Club'}
             </a>
             <a
+              href="#booking-facilities"
+              onClick={() => soundEngine.playStickStrike()}
+              className="px-3 py-2 text-black hover:text-[#E3000F] transition-colors font-medium"
+            >
+              {lang === 'kn' ? 'ಬುಕಿಂಗ್ಸ್' : 'Bookings'}
+            </a>
+            <a
               href="#vault"
               onClick={() => soundEngine.playSplitFlap()}
               className="px-3 py-2 text-black hover:text-[#E3000F] transition-colors font-medium"
@@ -212,11 +219,18 @@ export const HeaderHUD: React.FC<HeaderHUDProps> = ({
               {lang === 'kn' ? 'ಆಡಳಿತ' : 'Gazette'}
             </a>
             <a
-              href="#join"
+              href="#appendix"
+              onClick={() => soundEngine.playSplitFlap()}
+              className="px-3 py-2 text-[#5C5350] hover:text-[#E3000F] transition-colors font-medium"
+            >
+              {lang === 'kn' ? 'ಅನುಬಂಧ' : 'Appendix'}
+            </a>
+            <a
+              href="#booking-facilities"
               onClick={() => soundEngine.playGloryChime()}
               className="ml-2 px-4 py-2 bg-[#E3000F] hover:bg-[#9E000B] text-white font-bold transition-all shadow-sm"
             >
-              {lang === 'kn' ? 'ಸೇರ್ಪಡೆ' : 'Join'}
+              {lang === 'kn' ? 'ಬುಕ್ ಮಾಡಿ' : 'Book Hall'}
             </a>
           </nav>
 
