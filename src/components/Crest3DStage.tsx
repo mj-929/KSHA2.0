@@ -384,7 +384,7 @@ export const Crest3DStage: React.FC<Crest3DStageProps> = ({ className = '', size
         height={size}
         className="w-full max-w-[460px] h-auto transition-transform duration-300 group-hover:scale-105"
       />
-      <div className="absolute -bottom-4 text-[10px] uppercase font-mono tracking-[0.25em] text-neutral-400 opacity-60 group-hover:opacity-100 group-hover:text-ksha-red transition-all flex items-center gap-1.5">
+      <div className="absolute -bottom-4 text-[10px] uppercase font-mono tracking-[0.25em] text-neutral-600 font-medium group-hover:text-ksha-red transition-all flex items-center gap-1.5">
         <span className="w-1.5 h-1.5 rounded-full bg-ksha-red animate-ping" />
         Interactive 3D Crest · Click for Acoustic Strike
       </div>

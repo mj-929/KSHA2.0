@@ -56,7 +56,7 @@ export const NavigationRail: React.FC<NavigationRailProps> = ({ lang }) => {
         CHAPTERS
       </div>
 
-      <div className="flex flex-col items-end gap-2.5 bg-black/40 backdrop-blur-md p-2 rounded-full border border-white/5">
+      <div className="flex flex-col items-end gap-2.5 bg-white/80 backdrop-blur-md p-2 rounded-full border border-neutral-300 shadow-xl">
         {CHAPTERS.map((ch) => {
           const isActive = activeChapter === ch.id;
           return (
@@ -68,8 +68,8 @@ export const NavigationRail: React.FC<NavigationRailProps> = ({ lang }) => {
             >
               {/* Flyout Label on hover */}
               <span
-                className={`text-[10px] font-mono tracking-wider transition-all duration-300 opacity-0 group-hover:opacity-100 pointer-events-none translate-x-2 group-hover:translate-x-0 ${
-                  isActive ? 'text-ksha-red font-semibold' : 'text-neutral-400'
+                className={`text-[10px] font-mono tracking-wider transition-all duration-300 opacity-0 group-hover:opacity-100 pointer-events-none translate-x-2 group-hover:translate-x-0 bg-white/95 px-2 py-0.5 rounded shadow border border-neutral-200 ${
+                  isActive ? 'text-ksha-red font-bold' : 'text-neutral-700'
                 }`}
               >
                 {lang === 'kn' ? ch.kannada : ch.name}
@@ -79,8 +79,8 @@ export const NavigationRail: React.FC<NavigationRailProps> = ({ lang }) => {
               <div
                 className={`flex items-center justify-center font-cinzel text-[11px] font-bold rounded-full transition-all duration-300 ${
                   isActive
-                    ? 'w-7 h-7 bg-ksha-red text-white shadow-[0_0_12px_rgba(225,6,0,0.8)] scale-110'
-                    : 'w-6 h-6 bg-neutral-900 text-neutral-400 group-hover:text-white group-hover:bg-neutral-800 border border-neutral-800'
+                    ? 'w-7 h-7 bg-ksha-red text-white shadow-md shadow-ksha-red/40 scale-110'
+                    : 'w-6 h-6 bg-neutral-100 text-neutral-700 group-hover:text-black group-hover:bg-neutral-200 border border-neutral-300'
                 }`}
               >
                 {ch.num}

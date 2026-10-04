@@ -65,13 +65,13 @@ export const TheColosseum: React.FC<TheColosseumProps> = ({ lang }) => {
   const isNightMatch = luxLevel > 600;
 
   return (
-    <section id="colosseum" className="relative py-28 px-4 sm:px-6 lg:px-8 bg-black border-t border-neutral-900 overflow-hidden">
+    <section id="colosseum" className="relative py-28 px-4 sm:px-6 lg:px-8 bg-white border-t border-neutral-200 overflow-hidden">
       
       {/* Floodlight Glow Simulation Overlay */}
       <div
         className="absolute inset-0 pointer-events-none transition-opacity duration-300"
         style={{
-          background: `radial-gradient(ellipse at 50% 15%, rgba(255, 255, 255, ${floodlightOpacity * 0.15}) 0%, rgba(225, 6, 0, ${floodlightOpacity * 0.08}) 50%, transparent 85%)`,
+          background: `radial-gradient(ellipse at 50% 15%, rgba(225, 6, 0, ${floodlightOpacity * 0.08}) 0%, transparent 85%)`,
         }}
       />
 
@@ -79,68 +79,68 @@ export const TheColosseum: React.FC<TheColosseumProps> = ({ lang }) => {
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-neutral-900 border border-neutral-800 text-[10px] font-mono tracking-[0.25em] text-ksha-red uppercase mb-4">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-neutral-100 border border-neutral-300 text-[10px] font-mono tracking-[0.25em] text-ksha-red uppercase mb-4 font-bold">
             <Zap className="w-3.5 h-3.5" />
             CHAPTER III · THE ARENA
           </div>
 
-          <h2 className="font-cinzel font-black text-4xl sm:text-6xl text-white tracking-tight mb-4">
+          <h2 className="font-cinzel font-black text-4xl sm:text-6xl text-neutral-950 tracking-tight mb-4">
             {lang === 'kn' ? 'ಲ್ಯಾಂಗ್‌ಫೋರ್ಡ್ ಟೌನ್ · ೧೨೦೦ ಲಕ್ಸ್' : 'Langford Town at 1,200 Lux'}
           </h2>
 
-          <p className="font-editorial italic text-xl sm:text-2xl text-neutral-400">
+          <p className="font-editorial italic text-xl sm:text-2xl text-neutral-700 font-normal">
             &ldquo;100 yards of blue turf. 1,200 lux floodlights. Where Bangalore gathers to witness champions.&rdquo;
           </p>
         </div>
 
         {/* Telemetry HUD Card */}
-        <div className="mb-12 p-6 rounded-2xl bg-[#0B0B0B] border border-neutral-800 shadow-xl">
-          <div className="flex flex-wrap items-center justify-between gap-4 border-b border-neutral-800 pb-4 mb-6">
+        <div className="mb-12 p-6 rounded-2xl bg-neutral-50 border border-neutral-300 shadow-lg">
+          <div className="flex flex-wrap items-center justify-between gap-4 border-b border-neutral-200 pb-4 mb-6">
             
             <div className="flex items-center gap-2">
               <span className="w-2.5 h-2.5 rounded-full bg-turf-green animate-pulse" />
-              <span className="font-mono text-xs font-bold text-white uppercase tracking-wider">
+              <span className="font-mono text-xs font-bold text-neutral-950 uppercase tracking-wider">
                 LIVE METEOROLOGICAL TELEMETRY
               </span>
-              <span className="text-[10px] font-mono text-neutral-500">
+              <span className="text-[10px] font-mono text-neutral-600">
                 · LAT 12.9619° N, LON 77.6033° E (AKKITHIMMANAHALLI)
               </span>
             </div>
 
-            <div className="text-xs font-mono text-neutral-400">
-              STAMP: <span className="text-white">{weather.updatedAt} IST</span>
+            <div className="text-xs font-mono text-neutral-600">
+              STAMP: <span className="text-neutral-950 font-bold">{weather.updatedAt} IST</span>
             </div>
           </div>
 
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
-            <div className="p-4 rounded-xl bg-neutral-950 border border-neutral-800/80 flex items-center gap-3">
-              <Thermometer className="w-5 h-5 text-amber-400 shrink-0" />
+            <div className="p-4 rounded-xl bg-white border border-neutral-200 shadow-sm flex items-center gap-3">
+              <Thermometer className="w-5 h-5 text-amber-500 shrink-0" />
               <div>
-                <div className="text-[10px] font-mono uppercase text-neutral-500">TEMPERATURE</div>
-                <div className="text-xl font-mono font-bold text-white">{weather.temp}°C</div>
+                <div className="text-[10px] font-mono uppercase text-neutral-500 font-bold">TEMPERATURE</div>
+                <div className="text-xl font-mono font-bold text-neutral-950">{weather.temp}°C</div>
               </div>
             </div>
 
-            <div className="p-4 rounded-xl bg-neutral-950 border border-neutral-800/80 flex items-center gap-3">
-              <Droplets className="w-5 h-5 text-blue-400 shrink-0" />
+            <div className="p-4 rounded-xl bg-white border border-neutral-200 shadow-sm flex items-center gap-3">
+              <Droplets className="w-5 h-5 text-blue-500 shrink-0" />
               <div>
-                <div className="text-[10px] font-mono uppercase text-neutral-500">TURF MOISTURE</div>
-                <div className="text-xl font-mono font-bold text-white">{weather.humidity}% RH</div>
+                <div className="text-[10px] font-mono uppercase text-neutral-500 font-bold">TURF MOISTURE</div>
+                <div className="text-xl font-mono font-bold text-neutral-950">{weather.humidity}% RH</div>
               </div>
             </div>
 
-            <div className="p-4 rounded-xl bg-neutral-950 border border-neutral-800/80 flex items-center gap-3">
-              <Wind className="w-5 h-5 text-teal-400 shrink-0" />
+            <div className="p-4 rounded-xl bg-white border border-neutral-200 shadow-sm flex items-center gap-3">
+              <Wind className="w-5 h-5 text-teal-600 shrink-0" />
               <div>
-                <div className="text-[10px] font-mono uppercase text-neutral-500">WIND VELOCITY</div>
-                <div className="text-xl font-mono font-bold text-white">{weather.windSpeed} km/h</div>
+                <div className="text-[10px] font-mono uppercase text-neutral-500 font-bold">WIND VELOCITY</div>
+                <div className="text-xl font-mono font-bold text-neutral-950">{weather.windSpeed} km/h</div>
               </div>
             </div>
 
-            <div className="p-4 rounded-xl bg-neutral-950 border border-neutral-800/80 flex items-center gap-3">
+            <div className="p-4 rounded-xl bg-white border border-neutral-200 shadow-sm flex items-center gap-3">
               <Zap className="w-5 h-5 text-ksha-red shrink-0" />
               <div>
-                <div className="text-[10px] font-mono uppercase text-neutral-500">FLOODLIGHT ILLUM</div>
+                <div className="text-[10px] font-mono uppercase text-neutral-500 font-bold">FLOODLIGHT ILLUM</div>
                 <div className="text-xl font-mono font-bold text-ksha-red">{luxLevel} LUX</div>
               </div>
             </div>
@@ -148,19 +148,19 @@ export const TheColosseum: React.FC<TheColosseumProps> = ({ lang }) => {
         </div>
 
         {/* Interactive Lighting Slider Controls */}
-        <div className="mb-10 p-6 rounded-2xl bg-neutral-950 border border-neutral-800 flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="mb-10 p-6 rounded-2xl bg-neutral-50 border border-neutral-300 flex flex-col md:flex-row items-center justify-between gap-6 shadow-sm">
           <div className="flex items-center gap-4">
-            <Sun className={`w-6 h-6 transition-colors ${luxLevel < 400 ? 'text-amber-400' : 'text-neutral-600'}`} />
+            <Sun className={`w-6 h-6 transition-colors ${luxLevel < 400 ? 'text-amber-500' : 'text-neutral-400'}`} />
             <div>
-              <div className="font-cinzel font-bold text-sm text-white">Interactive Lighting Intensity Controller</div>
-              <div className="text-xs font-mono text-neutral-400">
+              <div className="font-cinzel font-bold text-sm text-neutral-950">Interactive Lighting Intensity Controller</div>
+              <div className="text-xs font-mono text-neutral-600">
                 Dial between natural morning sunlight (0 Lux) and full broadcast illumination (1,200 Lux)
               </div>
             </div>
           </div>
 
           <div className="flex items-center gap-4 w-full md:w-80">
-            <span className="font-mono text-xs text-neutral-400">0L</span>
+            <span className="font-mono text-xs text-neutral-600 font-bold">0L</span>
             <input
               type="range"
               min="0"
@@ -171,12 +171,12 @@ export const TheColosseum: React.FC<TheColosseumProps> = ({ lang }) => {
               className="w-full accent-ksha-red cursor-pointer"
             />
             <span className="font-mono text-xs text-ksha-red font-bold">1200L</span>
-            <Moon className={`w-6 h-6 transition-colors ${luxLevel > 800 ? 'text-blue-400' : 'text-neutral-600'}`} />
+            <Moon className={`w-6 h-6 transition-colors ${luxLevel > 800 ? 'text-blue-600' : 'text-neutral-400'}`} />
           </div>
         </div>
 
         {/* Stadium Colosseum Stage Viewport */}
-        <div className="relative rounded-2xl overflow-hidden border border-neutral-800 shadow-2xl bg-[#050B14]">
+        <div className="relative rounded-2xl overflow-hidden border border-neutral-300 shadow-2xl bg-[#091E36]">
           
           {/* Pitch Visualization */}
           <div
@@ -203,9 +203,9 @@ export const TheColosseum: React.FC<TheColosseumProps> = ({ lang }) => {
               <div className="absolute right-0 top-1/2 -translate-y-1/2 w-28 h-44 border-l-2 border-y-2 border-white/60 rounded-l-full" />
 
               {/* Pitch Info Overlay Badge */}
-              <div className="absolute top-4 left-4 bg-black/70 backdrop-blur-md px-3 py-1.5 rounded border border-white/20 text-xs font-mono">
+              <div className="absolute top-4 left-4 bg-black/80 backdrop-blur-md px-3 py-1.5 rounded border border-white/20 text-xs font-mono">
                 <div className="text-white font-bold">KSHA STADIUM MAIN ARENA</div>
-                <div className="text-[10px] text-neutral-400">FIH Certified Category 1 Synthetic Water-Based Turf</div>
+                <div className="text-[10px] text-neutral-300">FIH Certified Category 1 Synthetic Water-Based Turf</div>
               </div>
 
               {/* Floodlight Beam Cones */}
@@ -220,22 +220,22 @@ export const TheColosseum: React.FC<TheColosseumProps> = ({ lang }) => {
           </div>
 
           {/* Stadium Specs Strip */}
-          <div className="bg-neutral-950 p-6 border-t border-neutral-800 grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+          <div className="bg-white p-6 border-t border-neutral-200 grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
             <div>
-              <div className="text-[10px] font-mono text-neutral-500 uppercase">CAPACITY</div>
-              <div className="font-cinzel text-lg font-bold text-white">7,000 Spectators</div>
+              <div className="text-[10px] font-mono text-neutral-500 uppercase font-bold">CAPACITY</div>
+              <div className="font-cinzel text-lg font-bold text-neutral-950">7,000 Spectators</div>
             </div>
             <div>
-              <div className="text-[10px] font-mono text-neutral-500 uppercase">TURF SURFACE</div>
+              <div className="text-[10px] font-mono text-neutral-500 uppercase font-bold">TURF SURFACE</div>
               <div className="font-cinzel text-lg font-bold text-turf-green">Poligras Water-Based</div>
             </div>
             <div>
-              <div className="text-[10px] font-mono text-neutral-500 uppercase">LIGHTING ARRAY</div>
-              <div className="font-cinzel text-lg font-bold text-amber-400">1,200 Lux Musco LED</div>
+              <div className="text-[10px] font-mono text-neutral-500 uppercase font-bold">LIGHTING ARRAY</div>
+              <div className="font-cinzel text-lg font-bold text-amber-600">1,200 Lux Musco LED</div>
             </div>
             <div>
-              <div className="text-[10px] font-mono text-neutral-500 uppercase">LOCATION</div>
-              <div className="font-cinzel text-lg font-bold text-white">Langford Town, BLR</div>
+              <div className="text-[10px] font-mono text-neutral-500 uppercase font-bold">LOCATION</div>
+              <div className="font-cinzel text-lg font-bold text-neutral-950">Langford Town, BLR</div>
             </div>
           </div>
 

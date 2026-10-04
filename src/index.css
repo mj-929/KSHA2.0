@@ -5,9 +5,9 @@
 @layer base {
   html {
     font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
-    background-color: #050505;
-    color: #FFFFFF;
-    color-scheme: dark;
+    background-color: #FFFFFF;
+    color: #0A0A0A;
+    color-scheme: light;
   }
 }
 

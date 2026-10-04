@@ -41,32 +41,32 @@ export const SplitFlapCounters: React.FC<{ lang: 'en' | 'kn' }> = ({ lang }) => 
   }, []);
 
   return (
-    <section className="relative z-20 py-12 px-4 border-y border-neutral-800 bg-[#090909]">
+    <section className="relative z-20 py-12 px-4 border-y border-neutral-200 bg-[#F8FAFC]">
       <div className="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-8">
         {STATS.map((stat, idx) => (
           <div
             key={idx}
             onMouseEnter={() => soundEngine.playSplitFlap()}
-            className="relative flex flex-col items-center text-center p-6 bg-ksha-void rounded-xl border border-neutral-800 hover:border-ksha-red/60 transition-all duration-300 group shadow-lg"
+            className="relative flex flex-col items-center text-center p-6 bg-white rounded-xl border border-neutral-200 hover:border-ksha-red/60 transition-all duration-300 group shadow-md"
           >
             {/* Split Flap Reel Style Box */}
             <div className="relative mb-3 flex items-center justify-center">
-              <div className="px-5 py-2.5 bg-neutral-950 rounded border border-neutral-700/80 shadow-inner group-hover:border-ksha-red/70 transition-colors">
-                <span className="font-cinzel text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white group-hover:text-ksha-red transition-colors">
+              <div className="px-5 py-2.5 bg-neutral-50 rounded border border-neutral-300 shadow-inner group-hover:border-ksha-red/70 transition-colors">
+                <span className="font-cinzel text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-neutral-950 group-hover:text-ksha-red transition-colors">
                   {counts[idx] < 10 ? `0${counts[idx]}` : counts[idx]}
                 </span>
               </div>
               {/* Mechanical split line */}
-              <div className="absolute left-0 right-0 top-1/2 h-[1.5px] bg-black/80 pointer-events-none" />
+              <div className="absolute left-0 right-0 top-1/2 h-[1.5px] bg-neutral-300 pointer-events-none" />
             </div>
 
             {/* Label */}
-            <div className="font-cinzel font-bold text-xs sm:text-sm tracking-[0.14em] text-neutral-200 group-hover:text-white">
+            <div className="font-cinzel font-bold text-xs sm:text-sm tracking-[0.14em] text-neutral-900 group-hover:text-black">
               {lang === 'kn' ? stat.kannadaLabel : stat.label}
             </div>
 
             {/* Subtitle */}
-            <div className="text-[10px] font-mono tracking-wider text-neutral-500 mt-1 uppercase">
+            <div className="text-[10px] font-mono tracking-wider text-neutral-600 mt-1 uppercase font-medium">
               {stat.sub}
             </div>
 

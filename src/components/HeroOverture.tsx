@@ -14,36 +14,36 @@ export const HeroOverture: React.FC<HeroOvertureProps> = ({ lang }) => {
       className="relative min-h-screen pt-28 pb-20 px-4 sm:px-6 flex flex-col justify-center items-center overflow-hidden bg-radial-glow"
     >
       {/* Background Subtle Pitch Grid & Radial Vignette */}
-      <div className="absolute inset-0 bg-subtle-grid pointer-events-none opacity-40" />
-      <div className="absolute inset-0 bg-gradient-to-b from-ksha-void/60 via-transparent to-ksha-void pointer-events-none" />
+      <div className="absolute inset-0 bg-subtle-grid pointer-events-none opacity-60" />
+      <div className="absolute inset-0 bg-gradient-to-b from-white/40 via-transparent to-white pointer-events-none" />
 
       <div className="relative z-10 max-w-6xl mx-auto flex flex-col items-center text-center">
         
         {/* Kicker */}
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-neutral-900/80 border border-ksha-border text-[11px] font-mono tracking-[0.25em] text-neutral-300 uppercase mb-8 shadow-sm">
+        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-neutral-100 border border-neutral-300 text-[11px] font-mono tracking-[0.25em] text-neutral-800 uppercase mb-8 shadow-sm">
           <span className="w-1.5 h-1.5 rounded-full bg-ksha-red animate-pulse" />
           ESTD. 1937 · MYSORE STATE HOCKEY ASSOCIATION · BENGALURU
         </div>
 
         {/* Monumental Headline */}
-        <h1 className="font-cinzel font-black tracking-[-0.02em] text-5xl sm:text-7xl lg:text-8xl leading-[1.02] text-white max-w-5xl mb-6">
-          <span className="block text-transparent bg-clip-text bg-gradient-to-b from-white via-neutral-100 to-neutral-400">
+        <h1 className="font-cinzel font-black tracking-[-0.02em] text-5xl sm:text-7xl lg:text-8xl leading-[1.02] text-neutral-950 max-w-5xl mb-6">
+          <span className="block text-transparent bg-clip-text bg-gradient-to-b from-neutral-950 via-neutral-900 to-neutral-800">
             {lang === 'kn' ? 'ದಿ ಹೌಸ್ ಆಫ್ ಗ್ಲೋರಿ' : 'THE HOUSE'}
           </span>
-          <span className="block text-transparent bg-clip-text bg-gradient-to-r from-ksha-red via-[#FF4D4D] to-ksha-red drop-shadow-[0_0_35px_rgba(225,6,0,0.4)]">
+          <span className="block text-transparent bg-clip-text bg-gradient-to-r from-ksha-red via-[#DC2626] to-ksha-red drop-shadow-sm">
             {lang === 'kn' ? 'ಕರ್ನಾಟಕ ಹಾಕಿ ವೈಭವ' : 'OF GLORY'}
           </span>
         </h1>
 
         {/* Subtitle / Kannada synchronicity */}
-        <div className="font-cinzel text-sm sm:text-base tracking-[0.25em] text-neutral-400 uppercase mb-6 font-semibold">
+        <div className="font-cinzel text-sm sm:text-base tracking-[0.25em] text-neutral-600 uppercase mb-6 font-bold">
           {lang === 'kn'
             ? '೮೯ ವರ್ಷಗಳ ಭಾರತೀಯ ಹಾಕಿ ಇತಿಹಾಸ ಮತ್ತು ಗಾಂಭೀರ್ಯ'
             : 'Eighty-Nine Years of Indian Hockey Royalty'}
         </div>
 
         {/* Literary Editorial Italic Lede */}
-        <p className="font-editorial italic text-xl sm:text-2xl lg:text-3xl text-neutral-300 max-w-3xl leading-relaxed mb-10 text-center font-normal">
+        <p className="font-editorial italic text-xl sm:text-2xl lg:text-3xl text-neutral-800 max-w-3xl leading-relaxed mb-10 text-center font-normal">
           &ldquo;Forty-eight flags came to the Olympic games. Fifteen men carried Karnataka&rsquo;s soul into the striking circle.&rdquo;
         </p>
 
@@ -58,7 +58,7 @@ export const HeroOverture: React.FC<HeroOvertureProps> = ({ lang }) => {
           <a
             href="#immortals"
             onClick={() => soundEngine.playStickStrike()}
-            className="group flex items-center gap-3 px-6 py-3.5 rounded bg-ksha-red hover:bg-[#c00500] text-white font-cinzel font-bold text-xs sm:text-sm tracking-[0.16em] uppercase shadow-lg shadow-ksha-red/40 hover:shadow-ksha-red/60 transition-all duration-300"
+            className="group flex items-center gap-3 px-6 py-3.5 rounded bg-ksha-red hover:bg-[#c00500] text-white font-cinzel font-bold text-xs sm:text-sm tracking-[0.16em] uppercase shadow-lg shadow-ksha-red/25 hover:shadow-ksha-red/40 transition-all duration-300"
           >
             <Trophy className="w-4 h-4 text-white group-hover:rotate-12 transition-transform" />
             <span>{lang === 'kn' ? '೧೫ ದಿಗ್ಗಜರನ್ನು ವೀಕ್ಷಿಸಿ' : 'INSPECT THE 15 IMMORTALS'}</span>
@@ -67,9 +67,9 @@ export const HeroOverture: React.FC<HeroOvertureProps> = ({ lang }) => {
           <a
             href="#pavilion"
             onClick={() => soundEngine.playGloryChime()}
-            className="flex items-center gap-3 px-6 py-3.5 rounded bg-neutral-900 hover:bg-neutral-800 border border-neutral-700 hover:border-neutral-500 text-white font-cinzel font-bold text-xs sm:text-sm tracking-[0.16em] uppercase transition-all duration-300 shadow-sm"
+            className="flex items-center gap-3 px-6 py-3.5 rounded bg-white hover:bg-neutral-50 border border-neutral-300 hover:border-neutral-500 text-neutral-900 font-cinzel font-bold text-xs sm:text-sm tracking-[0.16em] uppercase transition-all duration-300 shadow-md"
           >
-            <Castle className="w-4 h-4 text-neutral-400" />
+            <Castle className="w-4 h-4 text-neutral-600" />
             <span>{lang === 'kn' ? 'ಪ್ರೈವೇಟ್ ಕ್ಲಬ್ ಪೆವಿಲಿಯನ್' : 'THE GENTLEMEN’S PAVILION'}</span>
           </a>
 
@@ -80,7 +80,7 @@ export const HeroOverture: React.FC<HeroOvertureProps> = ({ lang }) => {
       {/* Downward Chapter Indicator */}
       <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-neutral-500 opacity-70 hover:opacity-100 transition-opacity">
         <span className="text-[9px] font-mono tracking-[0.25em] uppercase">SCROLL FOR CHAPTER I</span>
-        <ChevronDown className="w-4 h-4 animate-bounce text-neutral-400" />
+        <ChevronDown className="w-4 h-4 animate-bounce text-neutral-600" />
       </div>
 
     </section>

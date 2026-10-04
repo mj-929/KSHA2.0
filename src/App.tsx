@@ -19,7 +19,7 @@ export function App() {
   const [isCommandPaletteOpen, setIsCommandPaletteOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-ksha-void text-white film-grain selection:bg-ksha-red selection:text-white">
+    <div className="min-h-screen bg-[#FFFFFF] text-[#0A0A0A] selection:bg-ksha-red selection:text-white">
       {/* Top Floating Glass HUD */}
       <HeaderHUD
         onOpenCommandPalette={() => setIsCommandPaletteOpen(true)}

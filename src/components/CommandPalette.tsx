@@ -61,11 +61,11 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose 
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-start justify-center pt-20 px-4 bg-black/85 backdrop-blur-md animate-fadeIn">
-      <div className="relative w-full max-w-2xl bg-[#0D0D0D] rounded-2xl border border-neutral-700 shadow-2xl overflow-hidden flex flex-col max-h-[80vh]">
+    <div className="fixed inset-0 z-50 flex items-start justify-center pt-20 px-4 bg-black/60 backdrop-blur-md animate-fadeIn">
+      <div className="relative w-full max-w-2xl bg-white rounded-2xl border border-neutral-200 shadow-2xl overflow-hidden flex flex-col max-h-[80vh]">
         
         {/* Search Input Bar */}
-        <div className="flex items-center px-5 py-4 border-b border-neutral-800 bg-black/60">
+        <div className="flex items-center px-5 py-4 border-b border-neutral-200 bg-neutral-50/80">
           <Search className="w-5 h-5 text-ksha-red mr-3 shrink-0" />
           <input
             autoFocus
@@ -73,11 +73,11 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose 
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Search Olympians, 1937 Club House, 18 Districts, Super Division..."
-            className="w-full bg-transparent text-white font-mono text-sm placeholder-neutral-500 focus:outline-none"
+            className="w-full bg-transparent text-neutral-900 font-mono text-sm placeholder-neutral-400 focus:outline-none"
           />
           <button
             onClick={onClose}
-            className="p-1 rounded bg-neutral-900 text-neutral-400 hover:text-white"
+            className="p-1 rounded bg-neutral-200 text-neutral-600 hover:text-neutral-950 transition-colors"
           >
             <X className="w-4 h-4" />
           </button>
@@ -89,7 +89,7 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose 
           {/* Olympians Results */}
           {matchingOlympians.length > 0 && (
             <div>
-              <div className="text-[10px] font-mono tracking-widest uppercase text-neutral-500 mb-2 px-2 flex items-center gap-1.5">
+              <div className="text-[10px] font-mono tracking-widest uppercase text-neutral-500 mb-2 px-2 flex items-center gap-1.5 font-bold">
                 <Medal className="w-3.5 h-3.5 text-ksha-red" />
                 <span>Olympians ({matchingOlympians.length})</span>
               </div>
@@ -98,17 +98,17 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose 
                   <div
                     key={olymp.id}
                     onClick={() => navigateTo('immortals')}
-                    className="p-2.5 rounded-lg hover:bg-neutral-900 cursor-pointer flex items-center justify-between group transition-colors"
+                    className="p-2.5 rounded-lg hover:bg-neutral-100 cursor-pointer flex items-center justify-between group transition-colors"
                   >
                     <div>
-                      <div className="font-cinzel font-bold text-sm text-white group-hover:text-ksha-red">
+                      <div className="font-cinzel font-bold text-sm text-neutral-900 group-hover:text-ksha-red transition-colors">
                         {olymp.name}
                       </div>
-                      <div className="text-xs font-mono text-neutral-400">
+                      <div className="text-xs font-mono text-neutral-500">
                         {olymp.games} · {olymp.position}
                       </div>
                     </div>
-                    <ArrowRight className="w-4 h-4 text-neutral-600 group-hover:text-white group-hover:translate-x-1 transition-all" />
+                    <ArrowRight className="w-4 h-4 text-neutral-400 group-hover:text-neutral-900 group-hover:translate-x-1 transition-all" />
                   </div>
                 ))}
               </div>
@@ -118,8 +118,8 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose 
           {/* Club Facilities Results */}
           {matchingFacilities.length > 0 && (
             <div>
-              <div className="text-[10px] font-mono tracking-widest uppercase text-neutral-500 mb-2 px-2 flex items-center gap-1.5">
-                <Castle className="w-3.5 h-3.5 text-amber-400" />
+              <div className="text-[10px] font-mono tracking-widest uppercase text-neutral-500 mb-2 px-2 flex items-center gap-1.5 font-bold">
+                <Castle className="w-3.5 h-3.5 text-amber-600" />
                 <span>Private Club Wing & Amenities</span>
               </div>
               <div className="space-y-1">
@@ -127,17 +127,17 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose 
                   <div
                     key={fac.id}
                     onClick={() => navigateTo('pavilion')}
-                    className="p-2.5 rounded-lg hover:bg-neutral-900 cursor-pointer flex items-center justify-between group transition-colors"
+                    className="p-2.5 rounded-lg hover:bg-neutral-100 cursor-pointer flex items-center justify-between group transition-colors"
                   >
                     <div>
-                      <div className="font-cinzel font-bold text-sm text-white group-hover:text-amber-400">
+                      <div className="font-cinzel font-bold text-sm text-neutral-900 group-hover:text-amber-600 transition-colors">
                         {fac.title}
                       </div>
-                      <div className="text-xs font-mono text-neutral-400">
+                      <div className="text-xs font-mono text-neutral-500">
                         {fac.highlight}
                       </div>
                     </div>
-                    <ArrowRight className="w-4 h-4 text-neutral-600 group-hover:text-white group-hover:translate-x-1 transition-all" />
+                    <ArrowRight className="w-4 h-4 text-neutral-400 group-hover:text-neutral-900 group-hover:translate-x-1 transition-all" />
                   </div>
                 ))}
               </div>
@@ -147,7 +147,7 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose 
           {/* District Cradles Results */}
           {matchingDistricts.length > 0 && (
             <div>
-              <div className="text-[10px] font-mono tracking-widest uppercase text-neutral-500 mb-2 px-2 flex items-center gap-1.5">
+              <div className="text-[10px] font-mono tracking-widest uppercase text-neutral-500 mb-2 px-2 flex items-center gap-1.5 font-bold">
                 <MapPin className="w-3.5 h-3.5 text-turf-green" />
                 <span>District Units ({matchingDistricts.length})</span>
               </div>
@@ -156,17 +156,17 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose 
                   <div
                     key={dist.id}
                     onClick={() => navigateTo('cradles')}
-                    className="p-2.5 rounded-lg hover:bg-neutral-900 cursor-pointer flex items-center justify-between group transition-colors"
+                    className="p-2.5 rounded-lg hover:bg-neutral-100 cursor-pointer flex items-center justify-between group transition-colors"
                   >
                     <div>
-                      <div className="font-cinzel font-bold text-sm text-white group-hover:text-turf-green">
+                      <div className="font-cinzel font-bold text-sm text-neutral-900 group-hover:text-turf-green transition-colors">
                         {dist.name}
                       </div>
-                      <div className="text-xs font-mono text-neutral-400">
+                      <div className="text-xs font-mono text-neutral-500">
                         HQ: {dist.headquarters} · {dist.zone}
                       </div>
                     </div>
-                    <ArrowRight className="w-4 h-4 text-neutral-600 group-hover:text-white group-hover:translate-x-1 transition-all" />
+                    <ArrowRight className="w-4 h-4 text-neutral-400 group-hover:text-neutral-900 group-hover:translate-x-1 transition-all" />
                   </div>
                 ))}
               </div>
@@ -182,7 +182,7 @@ export const CommandPalette: React.FC<CommandPaletteProps> = ({ isOpen, onClose 
         </div>
 
         {/* Footer shortcuts */}
-        <div className="px-5 py-3 border-t border-neutral-800 bg-black/80 flex items-center justify-between text-[11px] font-mono text-neutral-500">
+        <div className="px-5 py-3 border-t border-neutral-200 bg-neutral-50 flex items-center justify-between text-[11px] font-mono text-neutral-500">
           <span>Use ESC to close</span>
           <span>Karnataka State Hockey Association 1937 Registry</span>
         </div>

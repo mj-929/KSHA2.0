@@ -4,19 +4,19 @@ import { soundEngine } from '../utils/audio';
 
 export const FooterColophon: React.FC<{ lang: 'en' | 'kn' }> = ({ lang }) => {
   return (
-    <footer className="relative bg-black text-neutral-400 font-sans border-t border-neutral-900 pt-20 pb-12 px-4 sm:px-6 lg:px-8">
+    <footer className="relative bg-neutral-50 text-neutral-600 font-sans border-t border-neutral-200 pt-20 pb-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 pb-16 border-b border-neutral-900">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 pb-16 border-b border-neutral-200">
           
           {/* Brand & Crest Heritage */}
           <div className="lg:col-span-5 space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-ksha-red flex items-center justify-center border border-white/30 shadow-lg shadow-ksha-red/40">
+              <div className="w-10 h-10 rounded-full bg-ksha-red flex items-center justify-center border border-white/50 shadow-md shadow-ksha-red/30">
                 <Shield className="w-5 h-5 text-white" />
               </div>
               <div>
-                <span className="font-cinzel font-black text-lg text-white tracking-widest block">
+                <span className="font-cinzel font-black text-lg text-neutral-950 tracking-widest block">
                   KSHA BENGALURU
                 </span>
                 <span className="text-[10px] font-mono uppercase text-neutral-500 tracking-wider">
@@ -25,11 +25,11 @@ export const FooterColophon: React.FC<{ lang: 'en' | 'kn' }> = ({ lang }) => {
               </div>
             </div>
 
-            <p className="font-sans text-xs text-neutral-400 leading-relaxed max-w-sm">
+            <p className="font-sans text-xs text-neutral-600 leading-relaxed max-w-sm">
               The sovereign apex governing body of field hockey in Karnataka and custodian of the historic 1937 Private Sports Club and Gentlemen&rsquo;s Pavilion at Akkithimmanahalli.
             </p>
 
-            <div className="text-[11px] font-mono text-neutral-500 space-y-1">
+            <div className="text-[11px] font-mono text-neutral-600 space-y-1">
               <div className="flex items-start gap-2">
                 <MapPin className="w-4 h-4 text-ksha-red shrink-0 mt-0.5" />
                 <span>KSHA Hockey Stadium, Akkithimmanahalli, Langford Town, Shanti Nagar, Bengaluru – 560027</span>
@@ -47,7 +47,7 @@ export const FooterColophon: React.FC<{ lang: 'en' | 'kn' }> = ({ lang }) => {
 
           {/* Quick Chapter Navigation */}
           <div className="lg:col-span-3 space-y-3 font-mono text-xs">
-            <div className="font-cinzel font-bold text-white text-sm tracking-wider uppercase mb-2">
+            <div className="font-cinzel font-bold text-neutral-950 text-sm tracking-wider uppercase mb-2">
               The Chapters
             </div>
             <ul className="space-y-2">
@@ -96,14 +96,14 @@ export const FooterColophon: React.FC<{ lang: 'en' | 'kn' }> = ({ lang }) => {
 
           {/* Private Club Wing & Reciprocal Access */}
           <div className="lg:col-span-4 space-y-3 font-mono text-xs">
-            <div className="font-cinzel font-bold text-white text-sm tracking-wider uppercase mb-2">
+            <div className="font-cinzel font-bold text-neutral-950 text-sm tracking-wider uppercase mb-2">
               Private Club Sanctuary
             </div>
-            <p className="text-neutral-400 text-xs font-sans leading-relaxed">
+            <p className="text-neutral-600 text-xs font-sans leading-relaxed">
               KSHA Club features 8 Championship Billiards & Snooker Tables (Strachan 6811 Gold baize), 3 Maple Badminton Courts, Olympic Hydrotherapy Lap Pool, and Reciprocal Affiliations with Bowring Institute, Century Club, Madras Cricket Club, and Calcutta CC&FC.
             </p>
-            <div className="p-3 rounded-lg bg-neutral-950 border border-neutral-800 text-[11px] text-neutral-400">
-              <strong className="text-white block mb-1">Club Hours</strong>
+            <div className="p-3 rounded-lg bg-white border border-neutral-200 text-[11px] text-neutral-600 shadow-xs">
+              <strong className="text-neutral-950 block mb-1">Club Hours</strong>
               Billiards & Badminton: 06:00 – 22:00 Daily<br />
               Olympian Lounge & Terrace: 11:00 – 23:00
             </div>
@@ -117,11 +117,11 @@ export const FooterColophon: React.FC<{ lang: 'en' | 'kn' }> = ({ lang }) => {
             © 1937–2026 Karnataka State Hockey Association (KSHA). All Rights Reserved.
           </div>
           <div className="flex items-center gap-4">
-            <span className="hover:text-neutral-300 cursor-pointer">GIGW 3.0 Accessible</span>
+            <span className="hover:text-neutral-900 cursor-pointer">GIGW 3.0 Accessible</span>
             <span>·</span>
-            <span className="hover:text-neutral-300 cursor-pointer">RTI Act Compliance</span>
+            <span className="hover:text-neutral-900 cursor-pointer">RTI Act Compliance</span>
             <span>·</span>
-            <span className="hover:text-neutral-300 cursor-pointer">Mysore Societies Act 1937</span>
+            <span className="hover:text-neutral-900 cursor-pointer">Mysore Societies Act 1937</span>
           </div>
         </div>
 
