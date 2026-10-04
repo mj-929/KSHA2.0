@@ -118,18 +118,108 @@ export const GentlemensPavilion: React.FC<GentlemensPavilionProps> = ({ lang }) 
             </span>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            {RECIPROCAL_CLUBS.map((club, idx) => (
-              <div key={idx} className="p-5 rounded-xl bg-white border border-[#E6DAD8] space-y-2 hover:border-black transition-colors">
-                <span className="text-[10px] font-mono text-[#5C5350] uppercase">
-                  ESTD. {club.founded} · {club.city}
+          {/* Party Halls Tariff Card */}
+          <div className="mt-16 pt-10 border-t border-[#E6DAD8]">
+            <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
+              <div>
+                <span className="text-xs font-mono text-[#E3000F] uppercase tracking-wider font-bold">
+                  OFFICIAL RESOLUTION · EFFECTIVE 1 FEB 2026
                 </span>
-                <h4 className="disp text-xl text-black">{club.name}</h4>
-                <p className="text-xs text-[#3B3330] leading-relaxed">
-                  {club.privileges}
+                <h3 className="disp text-3xl sm:text-4xl text-black mt-1">
+                  Party Halls & Event Spaces
+                </h3>
+              </div>
+              <span className="text-xs font-mono text-[#5C5350]">
+                Contact: Sri R. Viswanath Singh (99809 05385)
+              </span>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              <div className="p-5 rounded-2xl bg-white border border-[#E6DAD8] hover:border-black transition-colors space-y-2">
+                <span className="text-[10px] font-mono text-[#E3000F] font-bold uppercase">20 – 40 PAX</span>
+                <h4 className="disp text-xl text-black">Green Party Hall 1 & 2</h4>
+                <p className="text-xs text-[#3B3330]">
+                  ₹2,360 (single hall) or ₹3,570 (combined halls) incl. GST. Ideal for small family gatherings and meetings.
                 </p>
               </div>
-            ))}
+
+              <div className="p-5 rounded-2xl bg-white border border-[#E6DAD8] hover:border-black transition-colors space-y-2">
+                <span className="text-[10px] font-mono text-[#E3000F] font-bold uppercase">50 PAX · ALL DAYS</span>
+                <h4 className="disp text-xl text-black">Ground Floor A/C Hall</h4>
+                <p className="text-xs text-[#3B3330]">
+                  ₹4,720 incl. 18% GST. Fully air-conditioned hall for corporate reviews, briefings and team dinners.
+                </p>
+              </div>
+
+              <div className="p-5 rounded-2xl bg-white border border-[#E6DAD8] hover:border-black transition-colors space-y-2">
+                <span className="text-[10px] font-mono text-[#E3000F] font-bold uppercase">60 – 70 PAX · AIR CONDITIONED</span>
+                <h4 className="disp text-xl text-black">2nd Floor A/C Party Hall</h4>
+                <p className="text-xs text-[#3B3330]">
+                  ₹8,760 for get-togethers · ₹12,300 for birthdays (incl. GST & cleaning). Panoramic turf vantage.
+                </p>
+              </div>
+
+              <div className="p-5 rounded-2xl bg-white border border-[#E6DAD8] hover:border-black transition-colors space-y-2">
+                <span className="text-[10px] font-mono text-[#E3000F] font-bold uppercase">100 – 250+ PAX</span>
+                <h4 className="disp text-xl text-black">Roof Terrace Party Hall</h4>
+                <p className="text-xs text-[#3B3330]">
+                  ₹9,940 to ₹12,300 for socials · ₹30,000 for grand marriages/receptions under open night floodlights.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Club Operations & Timings Notice */}
+          <div className="mt-12 p-6 sm:p-8 rounded-2xl bg-[#FBF8F7] border border-[#E6DAD8]">
+            <h4 className="disp text-2xl text-black mb-4">Official Club House Protocols & Timings</h4>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-xs font-mono">
+              <div className="space-y-1">
+                <span className="text-neutral-500 uppercase block font-bold text-[10px]">Forenoon Session</span>
+                <p className="text-sm font-bold text-black">11:30 AM – 3:30 PM</p>
+                <p className="text-[11px] text-[#5C5350]">Last order: 2:45 PM · Premises close: 4:00 PM</p>
+              </div>
+              <div className="space-y-1">
+                <span className="text-neutral-500 uppercase block font-bold text-[10px]">Evening Session</span>
+                <p className="text-sm font-bold text-black">6:30 PM – 11:00 PM</p>
+                <p className="text-[11px] text-[#5C5350]">Last order: 10:30 PM · Premises close: 11:15 PM</p>
+              </div>
+              <div className="space-y-1">
+                <span className="text-neutral-500 uppercase block font-bold text-[10px]">Annual Subscription</span>
+                <p className="text-sm font-bold text-black">₹4,248 / Year</p>
+                <p className="text-[11px] text-[#5C5350]">₹3,000 fee + ₹600 Sports Fund + 18% GST (Due 30 June)</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Reciprocal Clubs Grid */}
+          <div className="mt-16">
+            <div className="flex items-baseline justify-between mb-8 pb-4 border-b border-[#E6DAD8]">
+              <div>
+                <h3 className="disp text-3xl sm:text-4xl text-black">
+                  168 Reciprocal Elite Clubs
+                </h3>
+                <p className="text-xs font-mono text-[#5C5350] uppercase tracking-wider mt-1">
+                  Pan-Indian Historic Gentlemen’s Club Affiliations
+                </p>
+              </div>
+              <span className="text-xs font-mono text-[#E3000F] font-bold">
+                ESTD. 1868 – 1946
+              </span>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              {RECIPROCAL_CLUBS.map((club, idx) => (
+                <div key={idx} className="p-5 rounded-xl bg-white border border-[#E6DAD8] space-y-2 hover:border-black transition-colors">
+                  <span className="text-[10px] font-mono text-[#5C5350] uppercase">
+                    ESTD. {club.founded} · {club.city}
+                  </span>
+                  <h4 className="disp text-xl text-black">{club.name}</h4>
+                  <p className="text-xs text-[#3B3330] leading-relaxed">
+                    {club.privileges}
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
 
