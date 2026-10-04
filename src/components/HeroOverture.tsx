@@ -27,17 +27,17 @@ export const HeroOverture: React.FC<HeroOvertureProps> = ({ lang }) => {
 
         {/* Monumental Headline */}
         <h1 className="font-cinzel font-black tracking-[-0.02em] text-5xl sm:text-7xl lg:text-8xl leading-[1.02] max-w-5xl mb-6">
-          <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#000000] via-[#2A2A2E] to-[#666672] drop-shadow-sm pb-1">
+          <span className="block text-transparent bg-clip-text bg-gradient-to-b from-[#000000] via-[#26262B] to-[#666675] drop-shadow-sm pb-1">
             {lang === 'kn' ? 'ದಿ ಹೌಸ್ ಆಫ್ ಗ್ಲೋರಿ' : 'THE HOUSE'}
           </span>
-          <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#880808] via-[#E10600] to-[#FF4D36] drop-shadow-md pb-2">
+          <span className="block text-transparent bg-clip-text bg-gradient-to-b from-[#FF4D36] via-[#E10600] to-[#7A0600] drop-shadow-sm pb-2">
             {lang === 'kn' ? 'ಕರ್ನಾಟಕ ಹಾಕಿ ವೈಭವ' : 'OF GLORY'}
           </span>
         </h1>
 
         {/* Subtitle / Kannada synchronicity */}
         <div className="font-cinzel text-sm sm:text-base tracking-[0.25em] uppercase mb-6 font-bold">
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-neutral-900 via-neutral-700 to-neutral-500">
+          <span className="text-transparent bg-clip-text bg-gradient-to-b from-neutral-900 via-neutral-700 to-neutral-500">
             {lang === 'kn'
               ? '೮೯ ವರ್ಷಗಳ ಭಾರತೀಯ ಹಾಕಿ ಇತಿಹಾಸ ಮತ್ತು ಗಾಂಭೀರ್ಯ'
               : 'Eighty-Nine Years of Indian Hockey Royalty'}
