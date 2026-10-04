@@ -25,25 +25,39 @@ export default {
         }
       },
       fontFamily: {
+        anton: ['Anton', 'Impact', 'sans-serif'],
         cinzel: ['Cinzel', 'serif'],
         editorial: ['"Cormorant Garamond"', 'Georgia', 'serif'],
         mono: ['"Space Grotesk"', 'ui-monospace', 'monospace'],
-        kannada: ['"Noto Serif Kannada"', 'serif'],
-        sans: ['"Space Grotesk"', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+        kannada: ['"Noto Sans Kannada"', '"Noto Serif Kannada"', 'sans-serif'],
+        plex: ['"IBM Plex Sans"', 'system-ui', 'sans-serif'],
+        sans: ['"IBM Plex Sans"', '"Space Grotesk"', '-apple-system', 'sans-serif'],
       },
       backgroundImage: {
-        'radial-glow': 'radial-gradient(circle at center, rgba(225, 6, 0, 0.08) 0%, transparent 70%)',
+        'radial-glow': 'radial-gradient(circle at center, rgba(227, 0, 15, 0.12) 0%, transparent 70%)',
         'subtle-grid': 'linear-gradient(to right, rgba(0, 0, 0, 0.04) 1px, transparent 1px), linear-gradient(to bottom, rgba(0, 0, 0, 0.04) 1px, transparent 1px)',
       },
       animation: {
         'pulse-subtle': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
         'marquee': 'marquee 30s linear infinite',
+        'breathe': 'breathe 7s ease-in-out infinite',
+        'drip': 'drip 2.8s ease-in-out infinite',
       },
       keyframes: {
         marquee: {
           '0%': { transform: 'translateX(0%)' },
           '100%': { transform: 'translateX(-50%)' },
-        }
+        },
+        breathe: {
+          '0%, 100%': { opacity: '0.55', transform: 'scale(1)' },
+          '50%': { opacity: '0.9', transform: 'scale(1.08)' },
+        },
+        drip: {
+          '0%': { transform: 'scaleY(0)', transformOrigin: 'top' },
+          '50%': { transform: 'scaleY(1)', transformOrigin: 'top' },
+          '51%': { transformOrigin: 'bottom' },
+          '100%': { transform: 'scaleY(0)', transformOrigin: 'bottom' },
+        },
       }
     },
   },

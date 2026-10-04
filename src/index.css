@@ -28,3 +28,48 @@
 .clip-slanted {
   clip-path: polygon(0 0, calc(100% - 15px) 0, 100% 15px, 100% 100%, 15px 100%, 0 calc(100% - 15px));
 }
+
+/* User Design System Typography & Utilities */
+.disp {
+  font-family: 'Anton', 'Impact', sans-serif;
+  text-transform: uppercase;
+  line-height: 0.92;
+  letter-spacing: 0.005em;
+  font-weight: 400;
+}
+
+.whisper {
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-style: italic;
+  font-weight: 500;
+}
+
+.goldtxt {
+  color: #E3000F;
+  background: linear-gradient(180deg, #FF4D58 0%, #E3000F 48%, #9E000B 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.outline {
+  color: transparent;
+  -webkit-text-stroke: 2px #000000;
+}
+
+.outline-red {
+  color: transparent;
+  -webkit-text-stroke: 2px #E3000F;
+}
+
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.draw {
+  stroke-dasharray: 3200;
+  stroke-dashoffset: 3200;
+  animation: draw 4s ease-out 0.2s forwards;
+}

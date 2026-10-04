@@ -17,105 +17,119 @@ export const The18Cradles: React.FC<The18CradlesProps> = ({ lang }) => {
   });
 
   return (
-    <section id="cradles" className="relative py-28 px-4 sm:px-6 lg:px-8 bg-white border-t border-neutral-200">
+    <section id="cradles" className="relative py-24 sm:py-32 px-4 sm:px-6 lg:px-8 bg-white border-b border-[#E6DAD8]">
       <div className="max-w-7xl mx-auto">
         
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-neutral-100 border border-neutral-300 text-[10px] font-mono tracking-[0.25em] text-ksha-red uppercase mb-4 font-bold">
-            <Compass className="w-3.5 h-3.5" />
-            CHAPTER V · THE GRASSROOTS EMPIRE
+        {/* Section Header: Chapter III · The Heirs */}
+        <div className="mb-14">
+          <p className="chap mb-3">Chapter III</p>
+          <h2 className="disp text-5xl sm:text-7xl lg:text-9xl text-black mb-4">
+            {lang === 'kn' ? 'ಮುಂದಿನ ಪೀಳಿಗೆ' : 'The Heirs'}
+          </h2>
+          <p className="whisper text-2xl sm:text-3xl lg:text-4xl text-black max-w-3xl mb-8 leading-snug">
+            &ldquo;Every Saturday and Sunday, the next generation arrives with a stick that is slightly too big.&rdquo;
+          </p>
+
+          {/* Key Academy Stats (The Heirs Metrics) */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 pt-6 border-t border-[#C9B8B5]">
+            <div className="border-t-2 border-[#C9B8B5] pt-4">
+              <div className="disp goldtxt text-7xl sm:text-8xl lg:text-9xl">70</div>
+              <h3 className="disp text-2xl text-black mt-1">Players in the academy</h3>
+              <p className="text-sm text-[#3B3330] mt-2 max-w-xs font-sans">
+                School-going boys and girls train at weekends, then play for clubs across the four league tiers.
+              </p>
+            </div>
+
+            <div className="border-t-2 border-[#C9B8B5] pt-4">
+              <div className="disp goldtxt text-7xl sm:text-8xl lg:text-9xl">2</div>
+              <h3 className="disp text-2xl text-black mt-1">Decades and counting</h3>
+              <p className="text-sm text-[#3B3330] mt-2 max-w-xs font-sans">
+                The KSHA Hockey Academy has been nurturing grassroots talent in Langford Town for two decades.
+              </p>
+            </div>
+
+            <div className="border-t-2 border-[#C9B8B5] pt-4">
+              <div className="disp goldtxt text-7xl sm:text-8xl lg:text-9xl">40</div>
+              <h3 className="disp text-2xl text-black mt-1">Summer camp trainees</h3>
+              <p className="text-sm text-[#3B3330] mt-2 max-w-xs font-sans">
+                Around forty high-potential junior players attended the April–May 2025 intensive residential camp.
+              </p>
+            </div>
           </div>
 
-          <h2 className="font-cinzel font-black text-4xl sm:text-6xl text-neutral-950 tracking-tight mb-4">
-            {lang === 'kn' ? 'ಕೊಡಗಿನಿಂದ ಡೆಕ್ಕನ್‌ವರೆಗೆ' : 'From Kodagu Mist to Deccan Dust'}
-          </h2>
-
-          <p className="font-editorial italic text-xl sm:text-2xl text-neutral-700 font-normal">
-            &ldquo;In Kodagu, children are given a stick before they learn their first proverb.&rdquo;
-          </p>
+          <div className="mt-8 pt-4 border-t border-[#E6DAD8] flex flex-wrap items-center justify-between gap-4 text-xs font-mono text-[#5C5350]">
+            <p className="max-w-3xl">
+              Coached by A.E. Brient (late), T.C. Vinoba, N. Mahalingam, Md. Naseeruddin, A.N. Somaiah, Joseph Vijay and Ravindran Dsa, under chairman A.B. Palangappa.
+            </p>
+            <span className="px-3 py-1 rounded bg-[#FBF8F7] border border-[#E6DAD8] text-[#E3000F] font-bold uppercase tracking-wider">
+              18 Affiliated District Units
+            </span>
+          </div>
         </div>
 
-        {/* Zone Filters */}
-        <div className="flex flex-wrap items-center justify-center gap-2 mb-12 font-mono text-xs">
-          {[
-            { id: 'all', label: 'All 18 District Cradles' },
-            { id: 'Western Ghats / Coorg', label: 'Western Ghats & Coorg' },
-            { id: 'Northern Deccan', label: 'Northern Deccan & Belagavi' },
-            { id: 'Central & Hyderabad-K', label: 'Kalyana Karnataka & Doab' },
-            { id: 'Southern Maidan', label: 'Southern Maidan & Bangalore' },
-          ].map((tab) => (
-            <button
-              key={tab.id}
-              onClick={() => {
-                soundEngine.playSplitFlap();
-                setSelectedZone(tab.id);
-              }}
-              className={`px-4 py-2 rounded-full border transition-all ${
-                selectedZone === tab.id
-                  ? 'bg-ksha-red text-white border-ksha-red shadow-[0_0_15px_rgba(225,6,0,0.3)] font-semibold'
-                  : 'bg-neutral-100 text-neutral-800 border-neutral-300 hover:border-neutral-400 hover:text-black'
-              }`}
-            >
-              {tab.label}
-            </button>
-          ))}
-        </div>
+        {/* Grassroots District Cradles Map & Zone Filters */}
+        <div className="mt-16">
+          <div className="flex flex-wrap items-center justify-between gap-4 mb-8">
+            <h3 className="disp text-3xl sm:text-4xl text-black">
+              18 District Cradles of Karnataka
+            </h3>
+            <div className="flex flex-wrap gap-2">
+              {[
+                { id: 'all', label: 'All 18 Districts' },
+                { id: 'Western Ghats / Coorg', label: 'Kodagu (Coorg)' },
+                { id: 'Northern Deccan', label: 'Northern Deccan & Belagavi' },
+                { id: 'Central & Hyderabad-K', label: 'Kalyana Karnataka' },
+                { id: 'Southern Maidan', label: 'Bengaluru & Mysuru' },
+              ].map((tab) => (
+                <button
+                  key={tab.id}
+                  onClick={() => {
+                    soundEngine.playSplitFlap();
+                    setSelectedZone(tab.id);
+                  }}
+                  className={`px-3.5 py-1.5 rounded font-mono text-xs uppercase tracking-wider border transition-all ${
+                    selectedZone === tab.id
+                      ? 'bg-[#E3000F] text-white border-[#E3000F] font-bold shadow-xs'
+                      : 'bg-white text-black border-[#C9B8B5] hover:border-black'
+                  }`}
+                >
+                  {tab.label}
+                </button>
+              ))}
+            </div>
+          </div>
 
-        {/* Interactive District Cradles Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-          {filteredDistricts.map((dist) => {
-            const isCoorg = dist.name.toLowerCase().includes('coorg');
-            return (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {filteredDistricts.map((district) => (
               <div
-                key={dist.id}
-                onMouseEnter={() => {
-                  setActiveDistrict(dist);
-                  soundEngine.playSplitFlap();
+                key={district.id}
+                onClick={() => {
+                  soundEngine.playStickStrike();
+                  setActiveDistrict(district);
                 }}
-                className={`relative p-5 rounded-xl border transition-all duration-300 cursor-pointer flex flex-col justify-between group shadow-sm hover:shadow-md ${
-                  activeDistrict.id === dist.id
-                    ? 'bg-neutral-50 border-ksha-red shadow-md ring-1 ring-ksha-red/40'
-                    : 'bg-white border-neutral-200 hover:border-neutral-400'
+                className={`p-5 rounded-xl border transition-all cursor-pointer ${
+                  activeDistrict.id === district.id
+                    ? 'bg-[#FBF8F7] border-[#E3000F] shadow-sm'
+                    : 'bg-white border-[#E6DAD8] hover:border-[#8F8482]'
                 }`}
               >
-                <div>
-                  <div className="flex items-center justify-between text-[10px] font-mono text-neutral-500 uppercase mb-2 font-medium">
-                    <span>UNIT #{dist.id < 10 ? `0${dist.id}` : dist.id}</span>
-                    <span className="text-ksha-red font-bold">ESTD. {dist.established}</span>
-                  </div>
-
-                  <h3 className="font-cinzel font-bold text-base text-neutral-950 group-hover:text-ksha-red transition-colors mb-1">
-                    {dist.name}
-                  </h3>
-                  <div className="font-kannada text-xs text-neutral-600 mb-3 font-medium">
-                    {dist.kannadaName}
-                  </div>
-
-                  <div className="text-xs font-mono text-neutral-800 flex items-center gap-1.5 mb-2 font-medium">
-                    <MapPin className="w-3.5 h-3.5 text-ksha-red shrink-0" />
-                    <span>HQ: {dist.headquarters}</span>
-                  </div>
-
-                  <div className="p-2.5 rounded bg-neutral-100 border border-neutral-200 text-xs font-sans text-neutral-700">
-                    <strong className="text-neutral-950 font-semibold">Heritage: </strong>
-                    {dist.keyTalent}
-                  </div>
+                <div className="flex items-center justify-between mb-2">
+                  <span className="disp text-xl sm:text-2xl text-black">
+                    {district.name}
+                  </span>
+                  <span className="text-[10px] font-mono text-[#E3000F] uppercase font-bold px-2 py-0.5 rounded bg-red-50 border border-red-100">
+                    {district.hqCode}
+                  </span>
                 </div>
-
-                <div className="mt-4 pt-3 border-t border-neutral-200 flex items-center justify-between text-[10px] font-mono text-neutral-600 font-medium">
-                  <span>{dist.zone}</span>
-                  <span className="text-neutral-800 group-hover:text-ksha-red font-semibold">Active District Registry</span>
+                <div className="text-xs font-mono text-[#5C5350] mb-2">
+                  HQ: {district.headquarters} · {district.zone}
                 </div>
-
-                {isCoorg && (
-                  <div className="absolute top-2 right-2 px-2 py-0.5 rounded bg-amber-100 text-amber-900 text-[9px] font-mono border border-amber-300 font-semibold">
-                    Olympians Cradle
-                  </div>
-                )}
+                <p className="text-xs text-[#3B3330] leading-relaxed">
+                  {district.historicLore}
+                </p>
               </div>
-            );
-          })}
+            ))}
+          </div>
         </div>
 
       </div>

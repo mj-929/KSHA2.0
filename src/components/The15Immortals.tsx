@@ -1,11 +1,34 @@
 import React, { useState } from 'react';
 import { OLYMPIANS_DATA, Olympian } from '../data/kshaData';
-import { Trophy, Medal, MapPin, Award, X, Sparkles, Star } from 'lucide-react';
+import { Trophy, Medal, MapPin, Award, X, Sparkles, Star, Whistle, UserCheck } from 'lucide-react';
 import { soundEngine } from '../utils/audio';
 
 interface The15ImmortalsProps {
   lang: 'en' | 'kn';
 }
+
+const HONORED_LEGENDS = [
+  {
+    name: 'Asish Kumar Ballal',
+    badge: 'Olympian & Arjuna Awardee',
+    meta: 'Karnataka Rajyotsava Award (1 November 2025). Hero of the 1998 Asian Games Gold medal final penalty shootout.',
+  },
+  {
+    name: 'Md. Raheel Mouseen',
+    badge: 'Senior India International',
+    meta: 'Dynamic attacking midfielder in the national squad; recipient of the prestigious Karnataka State Ekalavya Award.',
+  },
+  {
+    name: 'H.S. Mohit & C.B. Poovanna',
+    badge: 'National Team Rising Stars',
+    meta: 'Karnataka’s new faces representing the senior Indian squad at the Sultan Azlan Shah Cup 2025.',
+  },
+  {
+    name: 'C.B. Janardhan',
+    badge: 'KSHA Life Member & Coach',
+    meta: 'Assistant Coach of the Indian Junior Men’s Team at the FIH Men’s Junior World Cup.',
+  },
+];
 
 export const The15Immortals: React.FC<The15ImmortalsProps> = ({ lang }) => {
   const [selectedOlympian, setSelectedOlympian] = useState<Olympian | null>(null);
@@ -26,194 +49,235 @@ export const The15Immortals: React.FC<The15ImmortalsProps> = ({ lang }) => {
   };
 
   return (
-    <section id="immortals" className="relative py-28 px-4 sm:px-6 lg:px-8 bg-white border-t border-neutral-200">
-      
-      {/* Chapter Rail Anchor Header */}
-      <div className="max-w-7xl mx-auto mb-16 text-center">
+    <section id="immortals" className="relative py-24 sm:py-32 px-4 sm:px-6 lg:px-8 bg-[#FBF8F7] border-b border-[#E6DAD8]">
+      <div className="max-w-7xl mx-auto">
         
-        <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-neutral-100 border border-neutral-300 text-[10px] font-mono tracking-[0.25em] text-ksha-red uppercase mb-4 font-bold">
-          <Medal className="w-3.5 h-3.5" />
-          CHAPTER I · THE HALL OF OLYMPIANS
-        </div>
+        {/* Section Header: Chapter IV · The Legends */}
+        <div className="mb-14">
+          <p className="chap mb-3">Chapter IV</p>
+          <h2 className="disp text-5xl sm:text-7xl lg:text-9xl text-black mb-4">
+            {lang === 'kn' ? 'ದಿಗ್ಗಜರ ಸಾಲು' : 'The Legends'}
+          </h2>
+          <p className="whisper text-2xl sm:text-3xl lg:text-4xl text-black max-w-3xl mb-8 leading-snug">
+            &ldquo;Karnataka does not need to be loud. The whistle was heard in two hundred international matches.&rdquo;
+          </p>
 
-        <h2 className="font-cinzel font-black text-4xl sm:text-6xl text-neutral-950 tracking-tight mb-4">
-          {lang === 'kn' ? '೧೫ ಒಲಿಂಪಿಕ್ ದಿಗ್ಗಜರು' : 'The Fifteen Immortals'}
-        </h2>
-
-        <p className="font-editorial italic text-xl sm:text-2xl text-neutral-700 max-w-2xl mx-auto mb-8 font-normal">
-          &ldquo;Before turf was synthetic, Karnataka turned European grass into fire.&rdquo;
-        </p>
-
-        {/* Filter Tabs */}
-        <div className="flex flex-wrap items-center justify-center gap-2 font-mono text-xs">
-          {[
-            { id: 'all', label: 'All 15 Immortals (೧೫ ದಿಗ್ಗಜರು)' },
-            { id: 'medalist', label: 'Olympic / World Medalists' },
-            { id: 'captain', label: 'Captains of India' },
-            { id: 'coorg', label: 'Kodagu (Coorg) Cradle' },
-          ].map((tab) => (
-            <button
-              key={tab.id}
-              onClick={() => {
-                soundEngine.playSplitFlap();
-                setFilterEra(tab.id);
-              }}
-              className={`px-4 py-2 rounded-full border transition-all ${
-                filterEra === tab.id
-                  ? 'bg-ksha-red text-white border-ksha-red shadow-[0_0_15px_rgba(225,6,0,0.3)] font-semibold'
-                  : 'bg-neutral-100 text-neutral-800 border-neutral-300 hover:border-neutral-400 hover:text-black'
-              }`}
-            >
-              {tab.label}
-            </button>
-          ))}
-        </div>
-
-      </div>
-
-      {/* Grid of Olympian Monumental Cards */}
-      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-        {filtered.map((olymp) => {
-          const isMedalist = olymp.medal !== 'Olympian';
-          return (
-            <div
-              key={olymp.id}
-              onClick={() => openOlympian(olymp)}
-              className="group relative bg-[#FFFFFF] rounded-xl border border-neutral-200 hover:border-ksha-red transition-all duration-300 overflow-hidden cursor-pointer flex flex-col justify-between p-6 shadow-md hover:shadow-2xl"
-            >
-              {/* Card Header & Era Badge */}
-              <div>
-                <div className="flex items-center justify-between gap-3 mb-4">
-                  <span className="font-mono text-[11px] uppercase tracking-widest text-neutral-600 flex items-center gap-1.5 font-medium">
-                    <span className="w-1.5 h-1.5 rounded-full bg-ksha-red" />
-                    {olymp.years}
-                  </span>
-
-                  {isMedalist ? (
-                    <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded bg-amber-100 text-amber-900 text-[10px] font-mono border border-amber-300 font-semibold">
-                      <Medal className="w-3 h-3 text-amber-600" />
-                      {olymp.medal} Medal
-                    </span>
-                  ) : (
-                    <span className="text-[10px] font-mono text-neutral-700 bg-neutral-100 border border-neutral-200 px-2 py-0.5 rounded font-medium">
-                      Olympian
-                    </span>
-                  )}
+          {/* R.V. Raghu Prasad Spotlight Feature */}
+          <div className="bg-white rounded-2xl border border-[#E6DAD8] p-8 sm:p-12 mb-12 shadow-sm">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+              <div className="lg:col-span-8 space-y-4">
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-50 text-[#E3000F] font-mono text-xs font-bold uppercase tracking-wider border border-red-200">
+                  <span>WORLD UMPIRE OF THE YEAR 2025</span>
                 </div>
-
-                {/* Olympian Name */}
-                <h3 className="font-cinzel font-bold text-2xl text-neutral-950 group-hover:text-ksha-red transition-colors mb-1">
-                  {olymp.name}
+                <h3 className="disp goldtxt text-5xl sm:text-7xl lg:text-8xl leading-none">
+                  R.V. Raghu Prasad
                 </h3>
-                <div className="font-kannada text-xs text-neutral-600 mb-3 font-medium">
-                  {olymp.kannadaName}
+                <p className="whisper text-xl sm:text-2xl text-[#3B3330]">
+                  The sovereign titan of international officiating, born and groomed in Bengaluru.
+                </p>
+              </div>
+
+              <div className="lg:col-span-4 flex justify-center">
+                <div className="w-36 h-36 sm:w-44 sm:h-44 rounded-full border-4 border-[#E3000F] p-2 flex items-center justify-center bg-red-50/50">
+                  <img
+                    src="/ksha-crest.png"
+                    alt="KSHA Official Seal"
+                    className="w-full h-full object-contain"
+                  />
                 </div>
+              </div>
+            </div>
 
-                {/* Role / Position */}
-                <div className="text-xs font-mono text-neutral-700 uppercase tracking-wider mb-4 border-l-2 border-ksha-red pl-2.5 font-medium">
-                  {olymp.position}
-                </div>
-
-                {/* Mythological Quote */}
-                <blockquote className="font-editorial italic text-base text-neutral-800 line-clamp-3 mb-5 border-t border-neutral-200 pt-4 leading-relaxed">
-                  &ldquo;{olymp.myth}&rdquo;
-                </blockquote>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-8 mt-8 border-t border-[#E6DAD8]">
+              <div>
+                <div className="disp text-5xl sm:text-6xl text-black">200</div>
+                <p className="text-xs font-mono text-[#5C5350] mt-1 uppercase tracking-wider">
+                  International Matches Officiated
+                </p>
+                <p className="text-xs text-[#3B3330] mt-1 font-sans">
+                  The first umpire from India and Asia to reach the historic 200 Golden Whistle landmark.
+                </p>
               </div>
 
-              {/* Card Footer: District & Inspect Action */}
-              <div className="pt-4 border-t border-neutral-200 flex items-center justify-between text-xs font-mono text-neutral-600">
-                <span className="flex items-center gap-1 text-neutral-700 font-medium">
-                  <MapPin className="w-3.5 h-3.5 text-ksha-red" />
-                  {olymp.district}
+              <div>
+                <div className="disp text-5xl sm:text-6xl text-black">3</div>
+                <p className="text-xs font-mono text-[#5C5350] mt-1 uppercase tracking-wider">
+                  Olympic Games Appointments
+                </p>
+                <p className="text-xs text-[#3B3330] mt-1 font-sans">
+                  London 2012, Tokyo 2020, and Paris 2024 Olympic Games umpire.
+                </p>
+              </div>
+
+              <div>
+                <div className="disp text-5xl sm:text-6xl text-[#E3000F]">2025</div>
+                <p className="text-xs font-mono text-[#5C5350] mt-1 uppercase tracking-wider">
+                  FIH Male Umpire of the Year
+                </p>
+                <p className="text-xs text-[#3B3330] mt-1 font-sans">
+                  Adjudged the world’s premier male field hockey umpire by the International Hockey Federation.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Hall of State Awardees */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-16">
+            {HONORED_LEGENDS.map((legend, idx) => (
+              <div key={idx} className="p-5 rounded-xl bg-white border border-[#E6DAD8] space-y-2">
+                <span className="text-[10px] font-mono text-[#E3000F] uppercase tracking-wider font-bold block">
+                  {legend.badge}
                 </span>
-                <span className="text-neutral-900 group-hover:text-ksha-red group-hover:translate-x-1 transition-all flex items-center gap-1 font-bold">
-                  Inspect Record →
-                </span>
+                <h4 className="disp text-2xl text-black">{legend.name}</h4>
+                <p className="text-xs text-[#3B3330] leading-relaxed">
+                  {legend.meta}
+                </p>
               </div>
-            </div>
-          );
-        })}
-      </div>
+            ))}
+          </div>
 
-      {/* Deep Inspection Olympian Modal */}
-      {selectedOlympian && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fadeIn">
-          <div className="relative w-full max-w-2xl bg-white rounded-2xl border border-neutral-300 p-6 sm:p-8 shadow-2xl overflow-y-auto max-h-[90vh]">
-            
-            {/* Close Button */}
-            <button
-              onClick={() => {
-                soundEngine.playSplitFlap();
-                setSelectedOlympian(null);
-              }}
-              className="absolute top-5 right-5 p-2 rounded-full bg-neutral-100 text-neutral-700 hover:text-black hover:bg-neutral-200 transition-colors"
-            >
-              <X className="w-5 h-5" />
-            </button>
-
-            {/* Header / Citation */}
-            <div className="flex items-center gap-2 text-xs font-mono text-ksha-red uppercase tracking-widest mb-3 font-bold">
-              <Trophy className="w-4 h-4" />
-              ANNEXURE 1 · OFFICIAL OLYMPIC GAZETTE RECORD
-            </div>
-
-            <h3 className="font-cinzel font-black text-3xl sm:text-4xl text-neutral-950 mb-1">
-              {selectedOlympian.name}
-            </h3>
-            <div className="font-kannada text-base text-neutral-600 mb-4 font-medium">
-              {selectedOlympian.kannadaName}
-            </div>
-
-            <div className="flex flex-wrap gap-2 mb-6">
-              <span className="px-3 py-1 rounded bg-neutral-100 border border-neutral-300 text-xs font-mono text-neutral-800 font-medium">
-                {selectedOlympian.games}
-              </span>
-              <span className="px-3 py-1 rounded bg-neutral-100 border border-neutral-300 text-xs font-mono text-neutral-800 font-medium">
-                {selectedOlympian.position}
-              </span>
-              <span className="px-3 py-1 rounded bg-neutral-100 border border-neutral-300 text-xs font-mono text-neutral-800 font-medium">
-                Cradle: {selectedOlympian.district}
-              </span>
-            </div>
-
-            {/* The Myth Poetic Narrative */}
-            <div className="p-4 rounded-xl bg-neutral-50 border border-neutral-200 mb-6">
-              <div className="text-[10px] font-mono tracking-widest text-neutral-500 uppercase mb-1 font-bold">
-                HISTORICAL REPUTE & LEGEND
-              </div>
-              <p className="font-editorial italic text-xl text-neutral-900 leading-relaxed font-normal">
-                &ldquo;{selectedOlympian.myth}&rdquo;
+          {/* The 15 Olympian Immortals Header */}
+          <div className="flex flex-col sm:flex-row items-baseline justify-between gap-4 border-b border-[#E6DAD8] pb-6 mb-8">
+            <div>
+              <h3 className="disp text-3xl sm:text-5xl text-black">
+                The Fifteen Immortals
+              </h3>
+              <p className="text-xs font-mono text-[#5C5350] uppercase tracking-widest mt-1">
+                Karnataka’s 15 Field Hockey Olympians
               </p>
             </div>
 
-            {/* Career Record Breakdown */}
-            <div className="mb-6">
-              <div className="text-xs font-mono tracking-widest text-neutral-600 uppercase mb-2 font-bold">
-                VERBATIM CAREER RECORD
-              </div>
-              <div className="p-4 rounded-xl bg-neutral-50 border border-neutral-200 text-sm font-mono text-neutral-900 leading-relaxed">
-                {selectedOlympian.record}
-              </div>
+            {/* Filter Tabs */}
+            <div className="flex flex-wrap gap-2 font-mono text-xs">
+              {[
+                { id: 'all', label: 'All 15 Immortals' },
+                { id: 'medalist', label: 'Medalists' },
+                { id: 'captain', label: 'Captains of India' },
+                { id: 'coorg', label: 'Kodagu Cradle' },
+              ].map((tab) => (
+                <button
+                  key={tab.id}
+                  onClick={() => {
+                    soundEngine.playSplitFlap();
+                    setFilterEra(tab.id);
+                  }}
+                  className={`px-3 py-1.5 rounded-full border transition-all ${
+                    filterEra === tab.id
+                      ? 'bg-[#E3000F] text-white border-[#E3000F] font-bold shadow-xs'
+                      : 'bg-white text-black border-[#C9B8B5] hover:border-black'
+                  }`}
+                >
+                  {tab.label}
+                </button>
+              ))}
             </div>
+          </div>
 
-            {/* Presidential & Federation Citations */}
-            <div>
-              <div className="text-xs font-mono tracking-widest text-neutral-600 uppercase mb-2 font-bold">
-                ACCREDITATIONS & HONORS
-              </div>
-              <div className="flex flex-wrap gap-2">
-                {selectedOlympian.awards.map((aw, i) => (
-                  <span
-                    key={i}
-                    className="inline-flex items-center gap-1.5 px-3 py-1 rounded bg-red-50 border border-red-200 text-red-900 text-xs font-mono font-semibold"
-                  >
-                    <Award className="w-3.5 h-3.5 text-ksha-red" />
-                    {aw}
+          {/* Grid of Olympian Monumental Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {filtered.map((olymp) => (
+              <div
+                key={olymp.id}
+                onClick={() => openOlympian(olymp)}
+                className="group relative p-6 rounded-2xl bg-white border border-[#E6DAD8] hover:border-[#E3000F] transition-all duration-300 cursor-pointer flex flex-col justify-between shadow-xs hover:shadow-md"
+              >
+                <div>
+                  <div className="flex items-center justify-between gap-2 mb-3">
+                    <span className="text-[11px] font-mono tracking-widest text-[#E3000F] uppercase font-bold">
+                      {olymp.games}
+                    </span>
+                    <span className="px-2.5 py-0.5 rounded text-[10px] font-mono font-bold uppercase bg-amber-50 text-amber-900 border border-amber-200">
+                      {olymp.medal}
+                    </span>
+                  </div>
+
+                  <h4 className="disp text-3xl text-black group-hover:text-[#E3000F] transition-colors mb-1">
+                    {olymp.name}
+                  </h4>
+                  <div className="text-[11px] font-kannada font-bold text-[#5C5350] mb-2">
+                    {olymp.kannadaName}
+                  </div>
+                  <div className="text-xs font-mono text-[#E3000F] font-bold uppercase tracking-wider mb-3">
+                    {olymp.position}
+                  </div>
+
+                  <p className="whisper text-lg text-[#3B3330] leading-snug line-clamp-3">
+                    &ldquo;{olymp.legacyQuote}&rdquo;
+                  </p>
+                </div>
+
+                <div className="mt-6 pt-4 border-t border-[#E6DAD8] flex items-center justify-between text-xs font-mono text-[#5C5350]">
+                  <span>{olymp.district}</span>
+                  <span className="text-[#E3000F] font-bold group-hover:underline">
+                    Inspect Record →
                   </span>
-                ))}
+                </div>
+              </div>
+            ))}
+          </div>
+
+        </div>
+
+      </div>
+
+      {/* Olympian Record Inspection Modal */}
+      {selectedOlympian && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-fadeIn">
+          <div className="relative w-full max-w-2xl bg-white rounded-2xl border border-[#E6DAD8] shadow-2xl overflow-hidden p-6 sm:p-8">
+            <div className="flex items-start justify-between border-b border-[#E6DAD8] pb-4 mb-6">
+              <div>
+                <span className="text-xs font-mono text-[#E3000F] uppercase tracking-widest font-bold">
+                  OLYMPIAN DOSSIER · {selectedOlympian.games}
+                </span>
+                <h3 className="disp text-4xl sm:text-5xl text-black mt-1">
+                  {selectedOlympian.name}
+                </h3>
+                <p className="font-kannada text-sm text-[#5C5350] font-bold">
+                  {selectedOlympian.kannadaName}
+                </p>
+              </div>
+              <button
+                onClick={() => setSelectedOlympian(null)}
+                className="p-1 rounded bg-neutral-100 hover:bg-neutral-200 text-black transition-colors"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            <div className="space-y-4">
+              <div className="grid grid-cols-2 gap-4 text-xs font-mono">
+                <div className="p-3 rounded-lg bg-[#FBF8F7] border border-[#E6DAD8]">
+                  <span className="text-[#5C5350] block uppercase">Position</span>
+                  <span className="font-bold text-black text-sm">{selectedOlympian.position}</span>
+                </div>
+                <div className="p-3 rounded-lg bg-[#FBF8F7] border border-[#E6DAD8]">
+                  <span className="text-[#5C5350] block uppercase">District Unit</span>
+                  <span className="font-bold text-black text-sm">{selectedOlympian.district}</span>
+                </div>
+              </div>
+
+              <div className="p-4 rounded-xl bg-[#FBF8F7] border border-[#E6DAD8]">
+                <span className="text-[11px] font-mono text-[#5C5350] uppercase tracking-wider block mb-1">
+                  Olympic Citation & Legacy
+                </span>
+                <p className="whisper text-xl text-black leading-relaxed">
+                  &ldquo;{selectedOlympian.legacyQuote}&rdquo;
+                </p>
+              </div>
+
+              <div className="text-xs text-[#3B3330] leading-relaxed font-sans">
+                {selectedOlympian.bio}
               </div>
             </div>
 
+            <div className="mt-6 pt-4 border-t border-[#E6DAD8] flex justify-end">
+              <button
+                onClick={() => setSelectedOlympian(null)}
+                className="px-6 py-2 rounded bg-black hover:bg-neutral-800 text-white font-mono text-xs uppercase tracking-wider"
+              >
+                Close Record
+              </button>
+            </div>
           </div>
         </div>
       )}

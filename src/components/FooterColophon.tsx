@@ -1,127 +1,135 @@
 import React from 'react';
-import { Shield, MapPin, Mail, Phone, ExternalLink } from 'lucide-react';
 import { soundEngine } from '../utils/audio';
 
 export const FooterColophon: React.FC<{ lang: 'en' | 'kn' }> = ({ lang }) => {
   return (
-    <footer className="relative bg-neutral-50 text-neutral-600 font-sans border-t border-neutral-200 pt-20 pb-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-7xl mx-auto">
+    <footer id="contact" className="bg-[#FFFFFF] border-t border-[#E6DAD8] font-sans">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-12">
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 pb-16 border-b border-neutral-200">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-12 border-b border-[#E6DAD8]">
           
-          {/* Brand & Crest Heritage */}
-          <div className="lg:col-span-5 space-y-4">
+          {/* Brand & Address Column */}
+          <div className="lg:col-span-4 space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-ksha-red flex items-center justify-center border border-white/50 shadow-md shadow-ksha-red/30">
-                <Shield className="w-5 h-5 text-white" />
-              </div>
+              <img
+                src="/ksha-crest.png"
+                alt="KSHA Official Seal"
+                className="w-12 h-12 object-contain"
+              />
               <div>
-                <span className="font-cinzel font-black text-lg text-neutral-950 tracking-widest block">
-                  KSHA BENGALURU
-                </span>
-                <span className="text-[10px] font-mono uppercase text-neutral-500 tracking-wider">
-                  MYSORE STATE HOCKEY ASSOCIATION · ESTD. 1937
-                </span>
+                <p className="disp text-3xl text-[#E3000F] leading-tight">
+                  Karnataka State<br />Hockey Association
+                </p>
               </div>
             </div>
 
-            <p className="font-sans text-xs text-neutral-600 leading-relaxed max-w-sm">
-              The sovereign apex governing body of field hockey in Karnataka and custodian of the historic 1937 Private Sports Club and Gentlemen&rsquo;s Pavilion at Akkithimmanahalli.
+            <p className="text-sm text-[#3B3330] leading-relaxed">
+              KSHA Hockey Stadium, Rhenius Street,<br />
+              Langford Town, Bengaluru – 560 025
             </p>
 
-            <div className="text-[11px] font-mono text-neutral-600 space-y-1">
-              <div className="flex items-start gap-2">
-                <MapPin className="w-4 h-4 text-ksha-red shrink-0 mt-0.5" />
-                <span>KSHA Hockey Stadium, Akkithimmanahalli, Langford Town, Shanti Nagar, Bengaluru – 560027</span>
+            <div className="text-xs text-[#3B3330] space-y-1 font-mono">
+              <div>
+                <a href="mailto:karnatakastatehockey@gmail.com" className="hover:text-[#E3000F] transition-colors">
+                  karnatakastatehockey@gmail.com
+                </a>
               </div>
-              <div className="flex items-center gap-2">
-                <Phone className="w-4 h-4 text-ksha-red shrink-0" />
-                <span>+91 80 2222 5555 / +91 80 2227 8989</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Mail className="w-4 h-4 text-ksha-red shrink-0" />
-                <span>secretariat@ksha.in · president@ksha.in</span>
-              </div>
+              <div>Office / WhatsApp: +91 78992 36355</div>
+              <div>Hon. Secretary: +91 98452 78847</div>
             </div>
           </div>
 
-          {/* Quick Chapter Navigation */}
+          {/* Explore Links */}
           <div className="lg:col-span-3 space-y-3 font-mono text-xs">
-            <div className="font-cinzel font-bold text-neutral-950 text-sm tracking-wider uppercase mb-2">
-              The Chapters
-            </div>
-            <ul className="space-y-2">
+            <h3 className="chap mb-2 text-[#E3000F]">Explore</h3>
+            <ul className="space-y-2 text-[#3B3330]">
               <li>
-                <a href="#overture" onClick={() => soundEngine.playSplitFlap()} className="hover:text-ksha-red transition-colors">
-                  ◆ Chapter 0: The House of Glory
+                <a href="#cup" onClick={() => soundEngine.playSplitFlap()} className="hover:text-[#E3000F] transition-colors">
+                  The Travancore Cup
                 </a>
               </li>
               <li>
-                <a href="#immortals" onClick={() => soundEngine.playSplitFlap()} className="hover:text-ksha-red transition-colors">
-                  I. The Fifteen Immortals
+                <a href="#battlegrounds" onClick={() => soundEngine.playSplitFlap()} className="hover:text-[#E3000F] transition-colors">
+                  The Four League Divisions
                 </a>
               </li>
               <li>
-                <a href="#charters" onClick={() => soundEngine.playSplitFlap()} className="hover:text-ksha-red transition-colors">
-                  II. The 1937 Constitutional Charters
+                <a href="#cradles" onClick={() => soundEngine.playSplitFlap()} className="hover:text-[#E3000F] transition-colors">
+                  The Grassroots Academy
                 </a>
               </li>
               <li>
-                <a href="#colosseum" onClick={() => soundEngine.playSplitFlap()} className="hover:text-ksha-red transition-colors">
-                  III. Langford Town at 1,200 Lux
+                <a href="#immortals" onClick={() => soundEngine.playSplitFlap()} className="hover:text-[#E3000F] transition-colors">
+                  The 15 Olympians & Legends
                 </a>
               </li>
               <li>
-                <a href="#battlegrounds" onClick={() => soundEngine.playSplitFlap()} className="hover:text-ksha-red transition-colors">
-                  IV. The Super Division Battlegrounds
+                <a href="#colosseum" onClick={() => soundEngine.playSplitFlap()} className="hover:text-[#E3000F] transition-colors">
+                  Langford Town Stadium (1,200 Lux)
                 </a>
               </li>
               <li>
-                <a href="#cradles" onClick={() => soundEngine.playSplitFlap()} className="hover:text-ksha-red transition-colors">
-                  V. The 18 Grassroots Cradles
-                </a>
-              </li>
-              <li>
-                <a href="#pavilion" onClick={() => soundEngine.playSplitFlap()} className="hover:text-ksha-red transition-colors">
-                  VI. The Gentlemen&rsquo;s Pavilion (Private Club)
-                </a>
-              </li>
-              <li>
-                <a href="#vault" onClick={() => soundEngine.playSplitFlap()} className="hover:text-ksha-red transition-colors">
-                  VII. The Imperial Vault & RTI
+                <a href="#pavilion" onClick={() => soundEngine.playGloryChime()} className="hover:text-[#E3000F] transition-colors">
+                  Private Clubhouse & Billiards
                 </a>
               </li>
             </ul>
           </div>
 
-          {/* Private Club Wing & Reciprocal Access */}
-          <div className="lg:col-span-4 space-y-3 font-mono text-xs">
-            <div className="font-cinzel font-bold text-neutral-950 text-sm tracking-wider uppercase mb-2">
-              Private Club Sanctuary
-            </div>
-            <p className="text-neutral-600 text-xs font-sans leading-relaxed">
-              KSHA Club features 8 Championship Billiards & Snooker Tables (Strachan 6811 Gold baize), 3 Maple Badminton Courts, Olympic Hydrotherapy Lap Pool, and Reciprocal Affiliations with Bowring Institute, Century Club, Madras Cricket Club, and Calcutta CC&FC.
-            </p>
-            <div className="p-3 rounded-lg bg-white border border-neutral-200 text-[11px] text-neutral-600 shadow-xs">
-              <strong className="text-neutral-950 block mb-1">Club Hours</strong>
-              Billiards & Badminton: 06:00 – 22:00 Daily<br />
-              Olympian Lounge & Terrace: 11:00 – 23:00
+          {/* Site & Statutory */}
+          <div className="lg:col-span-2 space-y-3 font-mono text-xs">
+            <h3 className="chap mb-2 text-[#E3000F]">Site & Gazette</h3>
+            <ul className="space-y-2 text-[#3B3330]">
+              <li>
+                <a href="#vault" onClick={() => soundEngine.playSplitFlap()} className="hover:text-[#E3000F] transition-colors">
+                  61 Member Clubs
+                </a>
+              </li>
+              <li>
+                <a href="#vault" onClick={() => soundEngine.playSplitFlap()} className="hover:text-[#E3000F] transition-colors">
+                  Audited Balance Sheets
+                </a>
+              </li>
+              <li>
+                <a href="#vault" onClick={() => soundEngine.playSplitFlap()} className="hover:text-[#E3000F] transition-colors">
+                  RTI Act Disclosures
+                </a>
+              </li>
+              <li>
+                <span className="text-[#5C5350]">GIGW 3.0 Accessible</span>
+              </li>
+            </ul>
+          </div>
+
+          {/* Club Operating Hours */}
+          <div className="lg:col-span-3 space-y-3 font-mono text-xs">
+            <h3 className="chap mb-2 text-[#E3000F]">Club Hours</h3>
+            <div className="p-4 rounded-xl bg-[#FBF8F7] border border-[#E6DAD8] space-y-2">
+              <div className="font-semibold text-black">Member & Dining Enclave</div>
+              <p className="text-[#3B3330] leading-relaxed">
+                11:30 AM – 3:30 PM (Lunch)<br />
+                6:30 PM – 11:00 PM (Dinner & Terrace)
+              </p>
+              <div className="font-semibold text-black pt-2 border-t border-[#E6DAD8]">Sports Facilities</div>
+              <p className="text-[#3B3330]">
+                06:00 AM – 10:00 PM Daily
+              </p>
             </div>
           </div>
 
         </div>
 
         {/* Bottom Colophon Bar */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-neutral-500">
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-[#5C5350]">
           <div>
-            © 1937–2026 Karnataka State Hockey Association (KSHA). All Rights Reserved.
+            © 1937–2026 Karnataka State Hockey Association (Regd.). A private society; not a government body.
           </div>
           <div className="flex items-center gap-4">
-            <span className="hover:text-neutral-900 cursor-pointer">GIGW 3.0 Accessible</span>
+            <span>Regd. No. 129/1937-38</span>
             <span>·</span>
-            <span className="hover:text-neutral-900 cursor-pointer">RTI Act Compliance</span>
+            <span>Mysore Societies Act</span>
             <span>·</span>
-            <span className="hover:text-neutral-900 cursor-pointer">Mysore Societies Act 1937</span>
+            <span>All Rights Reserved</span>
           </div>
         </div>
 
