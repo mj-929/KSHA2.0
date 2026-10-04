@@ -196,9 +196,9 @@ export const TheBattlegrounds: React.FC<TheBattlegroundsProps> = ({ lang }) => {
                 </thead>
                 <tbody className="divide-y divide-[#E6DAD8]">
                   {LEAGUE_STANDINGS.map((row) => (
-                    <tr key={row.rank} className="hover:bg-neutral-50 transition-colors">
-                      <td className="py-3.5 px-4 font-bold">{row.rank}</td>
-                      <td className="py-3.5 px-4 font-semibold text-black">{row.team}</td>
+                    <tr key={row.pos} className="hover:bg-neutral-50 transition-colors">
+                      <td className="py-3.5 px-4 font-bold">{row.pos}</td>
+                      <td className="py-3.5 px-4 font-semibold text-black">{row.club}</td>
                       <td className="py-3.5 px-4 text-center">{row.played}</td>
                       <td className="py-3.5 px-4 text-center">{row.won}</td>
                       <td className="py-3.5 px-4 text-center">{row.drawn}</td>

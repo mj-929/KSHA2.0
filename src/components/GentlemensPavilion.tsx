@@ -126,7 +126,7 @@ export const GentlemensPavilion: React.FC<GentlemensPavilionProps> = ({ lang }) 
                 </span>
                 <h4 className="disp text-xl text-black">{club.name}</h4>
                 <p className="text-xs text-[#3B3330] leading-relaxed">
-                  {club.privilege}
+                  {club.privileges}
                 </p>
               </div>
             ))}

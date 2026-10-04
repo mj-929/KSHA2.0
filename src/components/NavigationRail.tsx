@@ -10,13 +10,13 @@ interface Chapter {
 
 const CHAPTERS: Chapter[] = [
   { id: 'overture', num: '◆', name: 'Overture', kannada: 'ಮುನ್ನುಡಿ' },
-  { id: 'immortals', num: 'I', name: 'Legends', kannada: '೧೫ ದಿಗ್ಗಜರು' },
-  { id: 'charters', num: 'II', name: 'Genesis', kannada: 'ಸಂವಿಧಾನ' },
-  { id: 'colosseum', num: 'III', name: 'Arena', kannada: 'ರಂಗಭೂಮಿ' },
-  { id: 'battlegrounds', num: 'IV', name: 'Leagues', kannada: 'ಲೀಗ್ಸ್' },
-  { id: 'cradles', num: 'V', name: 'Cradles', kannada: '೧೮ ಜಿಲ್ಲೆಗಳು' },
-  { id: 'pavilion', num: 'VI', name: 'Pavilion', kannada: 'ಕ್ಲಬ್ ಹೌಸ್' },
-  { id: 'vault', num: 'VII', name: 'Vault', kannada: 'ಆಡಳಿತ ವಾಲ್ಟ್' },
+  { id: 'cup', num: 'I', name: 'The Cup', kannada: 'ಟ್ರಾವಂಕೂರ್ ಕಪ್' },
+  { id: 'battlegrounds', num: 'II', name: 'The League', kannada: 'ಲೀಗ್ಸ್' },
+  { id: 'cradles', num: 'III', name: 'The Heirs', kannada: '೧೮ ಜಿಲ್ಲೆಗಳು' },
+  { id: 'immortals', num: 'IV', name: 'The Legends', kannada: 'ದಿಗ್ಗಜರು' },
+  { id: 'club', num: 'V', name: 'The Club', kannada: 'ಕ್ಲಬ್ ಹೌಸ್' },
+  { id: 'vault', num: 'VI', name: 'The Vault', kannada: 'ದಾಖಲೆಗಳು' },
+  { id: 'join', num: 'VII', name: 'Finale', kannada: 'ಮುಕ್ತಾಯ' },
 ];
 
 interface NavigationRailProps {
@@ -51,40 +51,39 @@ export const NavigationRail: React.FC<NavigationRailProps> = ({ lang }) => {
   };
 
   return (
-    <nav className="fixed right-6 top-1/2 -translate-y-1/2 z-40 hidden xl:flex flex-col items-end gap-3.5 select-none pointer-events-auto">
-      <div className="text-[9px] font-mono uppercase tracking-[0.25em] text-neutral-500 mb-1 pr-1 rotate-90 origin-right translate-x-3">
-        CHAPTERS
-      </div>
-
-      <div className="flex flex-col items-end gap-2.5 bg-white/80 backdrop-blur-md p-2 rounded-full border border-neutral-300 shadow-xl">
+    <nav 
+      aria-label="Chapter navigation"
+      className="fixed right-5 top-1/2 -translate-y-1/2 z-40 hidden xl:flex flex-col items-center select-none pointer-events-auto"
+    >
+      {/* Sleek Vertical Pill Container */}
+      <div className="flex flex-col items-center gap-1.5 bg-white/90 backdrop-blur-md py-3 px-1.5 rounded-full border border-neutral-200/90 shadow-[0_4px_24px_rgba(0,0,0,0.08)]">
         {CHAPTERS.map((ch) => {
           const isActive = activeChapter === ch.id;
           return (
             <button
               key={ch.id}
               onClick={() => scrollToChapter(ch.id)}
-              className="group flex items-center gap-3 relative py-1 px-1.5 focus:outline-none"
-              title={`${ch.num} · ${ch.name}`}
+              className="group relative flex items-center justify-center w-8 h-8 rounded-full focus:outline-none"
+              aria-label={`${ch.name} (${ch.num})`}
             >
-              {/* Flyout Label on hover */}
-              <span
-                className={`text-[10px] font-mono tracking-wider transition-all duration-300 opacity-0 group-hover:opacity-100 pointer-events-none translate-x-2 group-hover:translate-x-0 bg-white/95 px-2 py-0.5 rounded shadow border border-neutral-200 ${
-                  isActive ? 'text-ksha-red font-bold' : 'text-neutral-700'
-                }`}
-              >
-                {lang === 'kn' ? ch.kannada : ch.name}
-              </span>
+              {/* Flyout Label on hover (Absolutely positioned to the left so it NEVER expands the rail pill) */}
+              <div className="absolute right-full mr-3.5 top-1/2 -translate-y-1/2 pointer-events-none opacity-0 group-hover:opacity-100 transition-all duration-200 translate-x-1 group-hover:translate-x-0 z-50">
+                <div className="bg-[#111111] text-white text-[11px] font-mono tracking-wider uppercase px-2.5 py-1 rounded shadow-lg whitespace-nowrap flex items-center gap-1.5">
+                  <span className="text-ksha-red font-bold">{ch.num}</span>
+                  <span>{lang === 'kn' ? ch.kannada : ch.name}</span>
+                </div>
+              </div>
 
-              {/* Indicator Pill / Roman Numeral */}
-              <div
-                className={`flex items-center justify-center font-cinzel text-[11px] font-bold rounded-full transition-all duration-300 ${
+              {/* Indicator Circle / Roman Numeral */}
+              <span
+                className={`font-cinzel text-[11px] font-bold rounded-full transition-all duration-200 flex items-center justify-center ${
                   isActive
-                    ? 'w-7 h-7 bg-ksha-red text-white shadow-md shadow-ksha-red/40 scale-110'
-                    : 'w-6 h-6 bg-neutral-100 text-neutral-700 group-hover:text-black group-hover:bg-neutral-200 border border-neutral-300'
+                    ? 'w-7 h-7 bg-ksha-red text-white shadow-md shadow-ksha-red/40 scale-105'
+                    : 'w-6 h-6 text-neutral-500 hover:text-black hover:bg-neutral-100'
                 }`}
               >
                 {ch.num}
-              </div>
+              </span>
             </button>
           );
         })}
@@ -92,3 +91,4 @@ export const NavigationRail: React.FC<NavigationRailProps> = ({ lang }) => {
     </nav>
   );
 };
+

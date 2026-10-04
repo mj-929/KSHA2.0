@@ -118,14 +118,14 @@ export const The18Cradles: React.FC<The18CradlesProps> = ({ lang }) => {
                     {district.name}
                   </span>
                   <span className="text-[10px] font-mono text-[#E3000F] uppercase font-bold px-2 py-0.5 rounded bg-red-50 border border-red-100">
-                    {district.hqCode}
+                    ESTD. {district.established}
                   </span>
                 </div>
                 <div className="text-xs font-mono text-[#5C5350] mb-2">
                   HQ: {district.headquarters} · {district.zone}
                 </div>
                 <p className="text-xs text-[#3B3330] leading-relaxed">
-                  {district.historicLore}
+                  Key Talent: {district.keyTalent}
                 </p>
               </div>
             ))}

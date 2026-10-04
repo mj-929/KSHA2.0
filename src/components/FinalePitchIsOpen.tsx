@@ -1,6 +1,6 @@
 import React from 'react';
 import { soundEngine } from '../utils/audio';
-import { Trophy, Castle, Whistle, UserCheck } from 'lucide-react';
+import { Trophy, Castle, Flag, UserCheck } from 'lucide-react';
 
 interface FinalePitchIsOpenProps {
   lang: 'en' | 'kn';

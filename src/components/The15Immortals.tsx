@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { OLYMPIANS_DATA, Olympian } from '../data/kshaData';
-import { Trophy, Medal, MapPin, Award, X, Sparkles, Star, Whistle, UserCheck } from 'lucide-react';
+import { Trophy, Medal, MapPin, Award, X, Sparkles, Star, UserCheck } from 'lucide-react';
 import { soundEngine } from '../utils/audio';
 
 interface The15ImmortalsProps {
@@ -202,7 +202,7 @@ export const The15Immortals: React.FC<The15ImmortalsProps> = ({ lang }) => {
                   </div>
 
                   <p className="whisper text-lg text-[#3B3330] leading-snug line-clamp-3">
-                    &ldquo;{olymp.legacyQuote}&rdquo;
+                    &ldquo;{olymp.myth}&rdquo;
                   </p>
                 </div>
 
@@ -261,12 +261,12 @@ export const The15Immortals: React.FC<The15ImmortalsProps> = ({ lang }) => {
                   Olympic Citation & Legacy
                 </span>
                 <p className="whisper text-xl text-black leading-relaxed">
-                  &ldquo;{selectedOlympian.legacyQuote}&rdquo;
+                  &ldquo;{selectedOlympian.myth}&rdquo;
                 </p>
               </div>
 
               <div className="text-xs text-[#3B3330] leading-relaxed font-sans">
-                {selectedOlympian.bio}
+                {selectedOlympian.record}
               </div>
             </div>
 
