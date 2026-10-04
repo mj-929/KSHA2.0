@@ -26,25 +26,29 @@ export const HeroOverture: React.FC<HeroOvertureProps> = ({ lang }) => {
         </div>
 
         {/* Monumental Headline */}
-        <h1 className="font-cinzel font-black tracking-[-0.02em] text-5xl sm:text-7xl lg:text-8xl leading-[1.02] text-neutral-950 max-w-5xl mb-6">
-          <span className="block text-transparent bg-clip-text bg-gradient-to-b from-neutral-950 via-neutral-900 to-neutral-800">
+        <h1 className="font-cinzel font-black tracking-[-0.02em] text-5xl sm:text-7xl lg:text-8xl leading-[1.02] max-w-5xl mb-6">
+          <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#000000] via-[#2A2A2E] to-[#666672] drop-shadow-sm pb-1">
             {lang === 'kn' ? 'ದಿ ಹೌಸ್ ಆಫ್ ಗ್ಲೋರಿ' : 'THE HOUSE'}
           </span>
-          <span className="block text-transparent bg-clip-text bg-gradient-to-r from-ksha-red via-[#DC2626] to-ksha-red drop-shadow-sm">
+          <span className="block text-transparent bg-clip-text bg-gradient-to-r from-[#880808] via-[#E10600] to-[#FF4D36] drop-shadow-md pb-2">
             {lang === 'kn' ? 'ಕರ್ನಾಟಕ ಹಾಕಿ ವೈಭವ' : 'OF GLORY'}
           </span>
         </h1>
 
         {/* Subtitle / Kannada synchronicity */}
-        <div className="font-cinzel text-sm sm:text-base tracking-[0.25em] text-neutral-600 uppercase mb-6 font-bold">
-          {lang === 'kn'
-            ? '೮೯ ವರ್ಷಗಳ ಭಾರತೀಯ ಹಾಕಿ ಇತಿಹಾಸ ಮತ್ತು ಗಾಂಭೀರ್ಯ'
-            : 'Eighty-Nine Years of Indian Hockey Royalty'}
+        <div className="font-cinzel text-sm sm:text-base tracking-[0.25em] uppercase mb-6 font-bold">
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-neutral-900 via-neutral-700 to-neutral-500">
+            {lang === 'kn'
+              ? '೮೯ ವರ್ಷಗಳ ಭಾರತೀಯ ಹಾಕಿ ಇತಿಹಾಸ ಮತ್ತು ಗಾಂಭೀರ್ಯ'
+              : 'Eighty-Nine Years of Indian Hockey Royalty'}
+          </span>
         </div>
 
         {/* Literary Editorial Italic Lede */}
-        <p className="font-editorial italic text-xl sm:text-2xl lg:text-3xl text-neutral-800 max-w-3xl leading-relaxed mb-10 text-center font-normal">
-          &ldquo;Forty-eight flags came to the Olympic games. Fifteen men carried Karnataka&rsquo;s soul into the striking circle.&rdquo;
+        <p className="font-editorial italic text-xl sm:text-2xl lg:text-3xl max-w-3xl leading-relaxed mb-10 text-center font-normal">
+          <span className="text-transparent bg-clip-text bg-gradient-to-b from-[#111111] via-[#2D2D2D] to-[#555555]">
+            &ldquo;Forty-eight flags came to the Olympic games. Fifteen men carried Karnataka&rsquo;s soul into the striking circle.&rdquo;
+          </span>
         </p>
 
         {/* 3D WebGL / Interactive Crest Emblem Stage */}
