@@ -1,5 +1,6 @@
 import React from 'react';
 import { soundEngine } from '../utils/audio';
+import { HeroParticleCanvas } from './HeroParticleCanvas';
 import { Trophy, Castle, ArrowDown } from 'lucide-react';
 
 interface HeroOvertureProps {
@@ -17,7 +18,10 @@ export const HeroOverture: React.FC<HeroOvertureProps> = ({
       aria-label="Overture"
       className="relative min-h-screen flex flex-col justify-center items-center overflow-hidden bg-[#FFFFFF] pt-28 pb-24 px-4 sm:px-6 select-none"
     >
-      {/* 1. Breathing Radial Vermilion Aura */}
+      {/* 1. Flying 3D Particles in background */}
+      <HeroParticleCanvas paused={isMotionPaused} />
+
+      {/* 2. Breathing Radial Vermilion Aura */}
       <div
         aria-hidden="true"
         className={`absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[1400px] h-[900px] pointer-events-none rounded-full ${

@@ -48,10 +48,19 @@ export const HeroParticleCanvas: React.FC<HeroParticleCanvasProps> = ({
       mousePos.current.targetX = x;
       mousePos.current.targetY = y;
     };
-    window.addEventListener('mousemove', handleMouseMove);
+    window.addEventListener('mousemove', handleMouseMove, { passive: true });
+
+    let isVisible = true;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        isVisible = entry.isIntersecting;
+      },
+      { threshold: 0.02 }
+    );
+    observer.observe(canvas);
 
     const render = () => {
-      if (!paused) {
+      if (!paused && isVisible && !document.hidden) {
         mousePos.current.x += (mousePos.current.targetX - mousePos.current.x) * 0.05;
         mousePos.current.y += (mousePos.current.targetY - mousePos.current.y) * 0.05;
 
@@ -119,6 +128,7 @@ export const HeroParticleCanvas: React.FC<HeroParticleCanvasProps> = ({
 
     return () => {
       cancelAnimationFrame(animationFrameId);
+      observer.disconnect();
       window.removeEventListener('resize', handleResize);
       window.removeEventListener('mousemove', handleMouseMove);
     };
